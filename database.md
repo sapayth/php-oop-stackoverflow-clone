@@ -35,6 +35,9 @@ Between (Select Range)
 Like (Searching)
 Not Like
 IN
+
+Aggregate Functions
+Group By
 ```
 
 #### FOREIGN KEY RELATED QUERIES WILL BE HANDLED LATER
