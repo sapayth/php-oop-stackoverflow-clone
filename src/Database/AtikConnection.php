@@ -1,24 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Hira
- * Date: 4/11/2020
- * Time: 11:08 AM
- */
 
 class AtikConnection
 {
     protected $db;
     private $hostname, $username, $password, $database;
 
-
-    /**
-     * AtikConnection constructor.
-     * @param $hostname
-     * @param $username
-     * @param $password
-     * @param $database
-     */
     public function __construct($hostname, $username, $password, $database)
     {
         $this->hostname = $hostname;
