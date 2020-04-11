@@ -10,4 +10,22 @@ class FaiyazRegisterUser
     {    
         $this->connection = new PDO('mysql:host=localhost;dbname=stack_overflow_clone', $this->db_username, $this->db_password);
     }
+
+    public function register($username, $password)
+    {
+        try{
+            
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+            $stmt = $this->connection->prepare("INSERT INTO `users`(username,password) VALUES (:username,:password)");
+            $stmt->bindParam(":username", $username);
+            $stmt->bindParam(":password", $hashed_password);
+            $stmt->execute();
+
+            return $stmt;
+
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
 }
