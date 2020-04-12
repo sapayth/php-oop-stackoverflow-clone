@@ -1,5 +1,5 @@
 <?php
-
+namespace StackOverflowClone\Src\Database;
 class AtikConnection
 {
     protected $db;
@@ -30,14 +30,14 @@ class AtikConnection
         $dsn = "mysql:host={$this->hostname};
                 dbname={$this->database};";
         $options = [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, # convert error to exception
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC   # set default fetch mode associative array
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION, # convert error to exception
+            \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC   # set default fetch mode associative array
         ];
 
         try {
-            $this->db = new PDO($dsn, $this->username, $this->password, $options);
+            $this->db = new \PDO($dsn, $this->username, $this->password, $options);
             #echo "Connected";
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             die("Connection failed" . $e->getMessage());
         }
 

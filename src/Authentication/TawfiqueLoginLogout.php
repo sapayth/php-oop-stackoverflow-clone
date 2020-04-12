@@ -1,5 +1,5 @@
 <?php
-
+namespace StackOverflowClone\Src\Authentication;
 class TawfiqueLoginLogout{
 
 	private $db_username = "root";
@@ -8,7 +8,7 @@ class TawfiqueLoginLogout{
 
 	public function __construct()
 	{    
-	    $this->connection = new PDO('mysql:host=localhost;dbname=stack_overflow_clone', $this->db_username, $this->db_password);
+	    $this->connection = new \PDO('mysql:host=localhost;dbname=stack_overflow_clone', $this->db_username, $this->db_password);
 	}
 	
 	public function userLogin($username,$password){
@@ -26,7 +26,7 @@ class TawfiqueLoginLogout{
             	$result = $this->connection->prepare($sql);
             	$result->execute();
 
-            	$row = $result->fetch(PDO::FETCH_ASSOC); //fetch array
+            	$row = $result->fetch(\PDO::FETCH_ASSOC); //fetch array
             	$stored_password = $row['password'];
 				$check = password_verify($password,$stored_password);
 
@@ -44,7 +44,7 @@ class TawfiqueLoginLogout{
 			}
 
 		}
-		catch(PDOException $e){
+		catch(\PDOException $e){
             echo $e->getMessage();
         }
 

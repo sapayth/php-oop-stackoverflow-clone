@@ -1,5 +1,5 @@
 <?php
-
+namespace StackOverflowClone\Src\Authentication;
 class FaiyazRegisterUser
 {
     private $db_username = "root";
@@ -8,7 +8,7 @@ class FaiyazRegisterUser
 
     public function __construct()
     {    
-        $this->connection = new PDO('mysql:host=localhost;dbname=stack_overflow_clone', $this->db_username, $this->db_password);
+        $this->connection = new \PDO('mysql:host=localhost;dbname=stack_overflow_clone', $this->db_username, $this->db_password);
     }
 
     public function register($username, $password)
@@ -24,7 +24,7 @@ class FaiyazRegisterUser
 
             return $stmt;
 
-        }catch(PDOException $e){
+        }catch(\PDOException $e){
             echo $e->getMessage();
         }
     }
