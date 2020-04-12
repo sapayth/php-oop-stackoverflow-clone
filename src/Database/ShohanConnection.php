@@ -1,14 +1,7 @@
 <?php
 
-include '../src/Database/ConnectionInterface.php';
-
-
-class ShohanConnection implements ConnectionInterface
+class ShohanConnection
 {
-    protected $link;
-
-    private $database, $username, $password;
-    
     public function __construct($host, $database, $username, $password)
     {
         $this->host = $host;
@@ -16,7 +9,7 @@ class ShohanConnection implements ConnectionInterface
         $this->username = $username;
         $this->password = $password;
 
-        $this->connect();
+        return $this->connect();
     }
     
     private function connect()
