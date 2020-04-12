@@ -10,6 +10,7 @@ class AbdusAfterLogin{
     public function setAuthenticate($usename){
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $usename;
+        return true;
     }
 
     public function logout(){
@@ -17,4 +18,18 @@ class AbdusAfterLogin{
         unset($_SESSION['username']);
         session_destroy();
     }
+
+    public function getAuthenticatedUser()
+    {
+        return $_SESSION['username'];
+    }
+
+    public function checkIfAuthenticated($usename)
+    {
+        if($this->setAuthenticate($usename)){
+            return true;
+        }
+        return false;
+    }
 }
+
