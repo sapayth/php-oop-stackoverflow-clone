@@ -32,9 +32,7 @@ class MamunCRUD
 					$query = "INSERT INTO posts (user_id, title, description) VALUES ('1', '$title', \"$description\")";
 					if ($sql = $this->conn->query($query)) {
 						
-						echo "<script>window.location.href = 'index.php';</script>";
-
-						// header('index.php');
+						header("Location: index.php");
 					} else {
 						echo "<script>alert('Failed!')</script>";
 
@@ -43,7 +41,7 @@ class MamunCRUD
 				} else {
 					echo "<script>alert('Fill out the form correctly!')</script>";
 
-					echo "<script>window.location.href = 'index.php';</script>";
+					header("Location: index.php");
 				}
 			}
 		}
@@ -81,9 +79,9 @@ class MamunCRUD
 
 	public function update($data)
 	{
-		$query = "UPDATE posts SET title='$data[title]', description='$data[description]' WHERE id = '$data[id]'";
+		$query = "UPDATE posts SET title='$data[title]', description=\"$data[description]\" WHERE id = '$data[id]'";
 		if ($sql = $this->conn->query($query)) {
-			echo "<script>window.location.href = 'index.php';</script>";
+			header("Location: index.php");
 			return true;
 		} else {
 			return false;
@@ -94,7 +92,7 @@ class MamunCRUD
 	{
 		$query = "DELETE FROM posts WHERE id = $id";
 		if ($sql = $this->conn->query($query)) {
-			echo "<script>window.location.href = 'index.php';</script>";
+			header("Location: index.php");
 			return true;
 		} else {
 			return false;
