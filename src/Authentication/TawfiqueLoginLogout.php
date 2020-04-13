@@ -1,4 +1,8 @@
 <?php
+namespace StackOverflowClone\Src\Authentication;
+
+use PDO;
+use PDOException;
 
 class TawfiqueLoginLogout{
 

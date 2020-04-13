@@ -1,5 +1,5 @@
 <?php
-
+namespace StackOverflowClone\Src\Database;
 class ShohanQuery extends ShohanConnection
 {
     public function basicQuery($tableName)
