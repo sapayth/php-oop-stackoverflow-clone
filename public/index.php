@@ -1,8 +1,17 @@
 <?php
 
-include '../src/Database/ShohanConnection.php';
+use StackOverflowClone\Src\Database\AtikConnection;
+use StackOverflowClone\Src\Database\ShohanConnection;
 
-$databaseConnectionInstance = new ShohanConnection('localhost','stack_faiyaz', 'root', '');
+include_once "../autoload.php";
+
+// include '../src/Database/ShohanConnection.php';
+// include '../src/Database/AtikConnection.php';
+
+//$databaseConnectionInstance = new ShohanConnection('localhost','rony', 'root', '');
+
+//$databaseConnectionInstanceFromAtik = new AtikConnection('localhost', 'root', '', 'rony');
+//$db = $databaseConnectionInstanceFromAtik->getConnection();
 
 // Configure connection parameters.
 

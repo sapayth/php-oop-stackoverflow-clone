@@ -1,5 +1,5 @@
 <?php
-
+namespace StackOverflowClone\Src\Database;
 interface ConnectionInterface
 {
     //public function connect();
