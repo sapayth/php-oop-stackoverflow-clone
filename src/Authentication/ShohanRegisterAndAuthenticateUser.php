@@ -1,12 +1,8 @@
 <?php
 
 
-Class ShohanRegisterAndAuthenticateUser
+namespace src\Authentication;
+
+class ShohanRegisterAndAuthenticateUser
 {
-
-
-
 }
-
-
-?>
