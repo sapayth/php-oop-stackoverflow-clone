@@ -75,18 +75,23 @@
         <h6 class="border-bottom border-gray pb-2 mb-0">Public Q&A</h6>
         <?php 
 
-        $mode = new MamunCRUD();
-        $rows = $mode->fetch();        
+        $model = new MamunCRUD();
+        $rows = $model->fetch();        
         if (!empty($rows)) {
           foreach ($rows as $row) { 
 
             ?>
 
             <div class="media text-muted pt-3">
-              
+
               <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                 <div class="d-flex justify-content-between align-items-center w-100">
                   <strong class="text-gray-dark"><?php echo $row['title']; ?></strong>
+                  <div>
+                    <a href="read.php?id=<?php echo $row['id']; ?>">Read</a>
+                    <a href="edit.php?id=<?php echo $row['id']; ?>">Edit</a>
+                    <a href="delete.php?id=<?php echo $row['id']; ?>">Delete</a>
+                  </div>
                 </div>
                 <span class="d-block"><?php echo substr($row['description'], 0, 50) . '...'; ?></span>
               </div>

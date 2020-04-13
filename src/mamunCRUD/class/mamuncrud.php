@@ -31,7 +31,7 @@ class MamunCRUD
 
 					$query = "INSERT INTO posts (user_id, title, description) VALUES ('1', '$title', \"$description\")";
 					if ($sql = $this->conn->query($query)) {
-						echo "<script>alert('Record added successfully')</script>";
+						
 						echo "<script>window.location.href = 'index.php';</script>";
 
 						// header('index.php');
@@ -55,6 +55,17 @@ class MamunCRUD
 
 		$query = "SELECT * FROM posts";
 		return $data = $this->conn->query($query);
+	}
+
+	public function delete($id)
+	{
+		$query = "DELETE FROM posts WHERE id = $id";
+		if ($sql = $this->conn->query($query)) {
+			echo "<script>window.location.href = 'index.php';</script>";
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
 
