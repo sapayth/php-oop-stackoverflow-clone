@@ -69,6 +69,27 @@ class MamunCRUD
 		}
 	}
 
+	public function edit($id)
+	{
+		$data = $this->conn->prepare("SELECT * FROM posts WHERE id = :id");
+		$data->execute(array (':id' => $id));
+
+		foreach ($data as $value) {
+			return $value;
+		}
+	}
+
+	public function update($data)
+	{
+		$query = "UPDATE posts SET title='$data[title]', description='$data[description]' WHERE id = '$data[id]'";
+		if ($sql = $this->conn->query($query)) {
+			echo "<script>window.location.href = 'index.php';</script>";
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public function delete($id)
 	{
 		$query = "DELETE FROM posts WHERE id = $id";
