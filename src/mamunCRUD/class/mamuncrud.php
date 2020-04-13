@@ -57,6 +57,18 @@ class MamunCRUD
 		return $data = $this->conn->query($query);
 	}
 
+	public function read($id)
+	{
+		// $data = null;
+
+		$data = $this->conn->prepare("SELECT * FROM posts WHERE id = :id");
+		$data->execute(array (':id' => $id));
+
+		foreach ($data as $value) {
+			return $value;
+		}
+	}
+
 	public function delete($id)
 	{
 		$query = "DELETE FROM posts WHERE id = $id";
