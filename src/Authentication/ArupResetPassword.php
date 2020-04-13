@@ -93,7 +93,7 @@ class ArupResetPassword{
 
                 $query->bindValue(':password',$password);
                 $query->bindValue(':id',$id);
-                b$result =  $query->execute();
+                $result =  $query->execute();
         if($result){
 
             Session::set("password_change","<div class='alert alert-success'><strong>Success!</strong> Password Change!</div>");
