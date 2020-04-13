@@ -10,8 +10,8 @@ include_once "../autoload.php";
 
 //$databaseConnectionInstance = new ShohanConnection('localhost','rony', 'root', '');
 
-$databaseConnectionInstanceFromAtik = new AtikConnection('localhost', 'root', '', 'rony');
-$db = $databaseConnectionInstanceFromAtik->getConnection();
+//$databaseConnectionInstanceFromAtik = new AtikConnection('localhost', 'root', '', 'rony');
+//$db = $databaseConnectionInstanceFromAtik->getConnection();
 
 // Configure connection parameters.
 
