@@ -51,9 +51,16 @@
       <div class="my-3 p-3 bg-white rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-0">Ask Your Question</h6>
 
+        <?php 
+        include 'class/mamuncrud.php';
+
+        $model = new MamunCRUD;
+        $insert = $model->create();
+        ?>
+
         <form action="" method="post">
           <div class="form-group">
-            <input type="text" class="form-control" id="title" placeholder="Title">
+            <input type="text" class="form-control" name="title" placeholder="Title">
           </div>
           <div class="form-group">
             <textarea name="description" class="form-control" rows="3" placeholder="Description"></textarea>
@@ -62,40 +69,35 @@
         </form>
       </div>
 
+
+      <!-- Fetch data -->
       <div class="my-3 p-3 bg-white rounded shadow-sm">
-        <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
-        <div class="media text-muted pt-3">
-          <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
-          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <div class="d-flex justify-content-between align-items-center w-100">
-              <strong class="text-gray-dark">Full Name</strong>
-              <a href="#">Follow</a>
+        <h6 class="border-bottom border-gray pb-2 mb-0">Public Q&A</h6>
+        <?php 
+
+        $mode = new MamunCRUD();
+        $rows = $mode->fetch();        
+        if (!empty($rows)) {
+          foreach ($rows as $row) { 
+
+            ?>
+
+            <div class="media text-muted pt-3">
+              
+              <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                  <strong class="text-gray-dark"><?php echo $row['title']; ?></strong>
+                </div>
+                <span class="d-block"><?php echo substr($row['description'], 0, 50) . '...'; ?></span>
+              </div>
             </div>
-            <span class="d-block">@username</span>
-          </div>
-        </div>
-        <div class="media text-muted pt-3">
-          <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
-          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <div class="d-flex justify-content-between align-items-center w-100">
-              <strong class="text-gray-dark">Full Name</strong>
-              <a href="#">Follow</a>
-            </div>
-            <span class="d-block">@username</span>
-          </div>
-        </div>
-        <div class="media text-muted pt-3">
-          <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
-          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <div class="d-flex justify-content-between align-items-center w-100">
-              <strong class="text-gray-dark">Full Name</strong>
-              <a href="#">Follow</a>
-            </div>
-            <span class="d-block">@username</span>
-          </div>
-        </div>
+
+            <?php 
+          }
+        }
+        ?>
         <small class="d-block text-right mt-3">
-          <a href="#">All suggestions</a>
+          <a href="">Next Page</a>
         </small>
       </div>
     </main>
