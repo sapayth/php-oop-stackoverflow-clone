@@ -1,4 +1,7 @@
 <?php
+
+namespace StackOverflowClone\Src\Authentication;
+
 class AbdusAfterLogin{
     public function __construct()
     {

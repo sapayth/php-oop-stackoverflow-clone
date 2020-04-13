@@ -1,14 +1,10 @@
 <?php
+namespace StackOverflowClone\Src\Database;
 
-include '../src/Database/ConnectionInterface.php';
+use PDO;
 
-
-class ShohanConnection implements ConnectionInterface
+class ShohanConnection
 {
-    protected $link;
-
-    private $database, $username, $password;
-    
     public function __construct($host, $database, $username, $password)
     {
         $this->host = $host;
@@ -16,12 +12,12 @@ class ShohanConnection implements ConnectionInterface
         $this->username = $username;
         $this->password = $password;
 
-        $this->connect();
+        return $this->connect();
     }
     
     private function connect()
     {
-        $this->link = new PDO('mysql:host=localhost;dbname=stack_faiyaz', $this->username, $this->password);
+        $this->link = new PDO('mysql:host=localhost;dbname=rony', $this->username, $this->password);
     }
     
     public function __sleep()
