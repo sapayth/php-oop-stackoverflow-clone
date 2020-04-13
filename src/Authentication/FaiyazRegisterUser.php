@@ -1,20 +1,13 @@
 <?php
 namespace StackOverflowClone\Src\Authentication;
 
-use PDO;
 use PDOException;
+use StackOverflowClone\Src\Database\FaiyazConnection;
 
-class FaiyazRegisterUser
+include_once '../../autoload.php';
+
+class FaiyazRegisterUser extends FaiyazConnection
 {
-    private $db_username = "root";
-    private $db_password = "";
-    public $connection;
-
-    public function __construct()
-    {    
-        $this->connection = new PDO('mysql:host=localhost;dbname=stack_overflow_clone', $this->db_username, $this->db_password);
-    }
-
     public function register($username, $password)
     {
         try{
@@ -33,3 +26,4 @@ class FaiyazRegisterUser
         }
     }
 }
+
