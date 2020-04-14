@@ -2,27 +2,33 @@
 
 namespace StackOverflowClone\Src\Database;
 
+use PDOException;
 use StackOverflowClone\Src\Database\FaiyazConnection;
 
 include_once '../../autoload.php';
 
 class FaiyazQuery extends FaiyazConnection
 {
-    //Using these method you can get all the users data just using username
-    public function getUser($username)
+    //Using these method you have to just pass the table name and value as a array. Thenv value wibb be inserted on database 
+    public function insert($table, array $data)
     {
-        $sql = "SELECT * FROM `users` WHERE username = ?";
-        $stmt = $this->connect()->prepare($sql);
-        $stmt->execute([$username]);
-        $users = $stmt->fetchAll();
-
-        foreach($users as $user){
-            echo "Name is ". $user['username'] . "<br>";
-            echo "Password is " . $user['password'] . "<br>";
+        try {
+            if (is_array($data)) {
+                $columnNames = join(',', array_keys($data));
+                $columnValues = ':' . join(', :', array_keys($data));
+                $sql = "INSERT INTO $table ($columnNames) VALUES ($columnValues)";
+                $stmt = $this->connect()->prepare($sql);
+                $stmt->execute($data);
+            }
+        } catch (PDOException $e) {
+            $e->getMessage();
         }
     }
 }
 
 // $user = new FaiyazQuery();
-// $user->getUser('faiyaz');
-
+// $data = [
+//     "username" => 'faiyaz',
+//     "password" =>  password_hash('Pass1436', PASSWORD_DEFAULT),
+// ];
+// $user->insert("users", $data);
