@@ -10,8 +10,8 @@ class FaiyazRegisterUser extends FaiyazConnection
 {
     public function register($username = 'asif', $password = 'Pass1436')
     {
-        try{
-            
+        try {
+
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
             $stmt = $this->connect()->prepare("INSERT INTO `users`(username,password) VALUES (:username,:password)");
@@ -20,8 +20,7 @@ class FaiyazRegisterUser extends FaiyazConnection
             $stmt->execute();
 
             return $stmt;
-
-        }catch(PDOException $e){
+        } catch (\PDOException $e) {
             echo $e->getMessage();
         }
     }

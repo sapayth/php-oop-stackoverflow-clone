@@ -3,6 +3,10 @@ namespace StackOverflowClone\Src\Database;
 
 use PDO;
 
+namespace src\Database;
+
+use PDO;
+
 class ShohanConnection
 {
     public function __construct($host, $database, $username, $password)
@@ -14,19 +18,19 @@ class ShohanConnection
 
         return $this->connect();
     }
-    
+
     private function connect()
     {
         $this->link = new PDO('mysql:host=localhost;dbname=rony', $this->username, $this->password);
     }
-    
+
     public function __sleep()
     {
         return array('database', 'username', 'password');
     }
-    
+
     public function __wakeup()
     {
         $this->connect();
     }
-}?>
+}
