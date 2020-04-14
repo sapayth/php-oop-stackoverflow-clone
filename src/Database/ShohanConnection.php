@@ -1,4 +1,7 @@
 <?php
+namespace StackOverflowClone\Src\Database;
+
+use PDO;
 
 namespace src\Database;
 
@@ -18,7 +21,7 @@ class ShohanConnection
 
     private function connect()
     {
-        $this->link = new PDO('mysql:host=localhost;dbname=stack_faiyaz', $this->username, $this->password);
+        $this->link = new PDO('mysql:host=localhost;dbname=rony', $this->username, $this->password);
     }
 
     public function __sleep()

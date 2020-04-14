@@ -9,9 +9,18 @@ use src\Authentication\TawfiqueLoginLogout;
 // include '../src/Database/AtikConnection.php';
 
 //$databaseConnectionInstance = new ShohanConnection('localhost', 'stack_faiyaz', 'root', '');
+use StackOverflowClone\Src\Database\AtikConnection;
+use StackOverflowClone\Src\Database\ShohanConnection;
 
-#$databaseConnectionInstanceFromAtik = new AtikConnection('localhost', 'root', '', 'test');
-#$db = $databaseConnectionInstanceFromAtik->getDB();
+
+
+// include '../src/Database/ShohanConnection.php';
+// include '../src/Database/AtikConnection.php';
+
+//$databaseConnectionInstance = new ShohanConnection('localhost','rony', 'root', '');
+
+//$databaseConnectionInstanceFromAtik = new AtikConnection('localhost', 'root', '', 'rony');
+//$db = $databaseConnectionInstanceFromAtik->getConnection();
 
 // Configure connection parameters.
 
