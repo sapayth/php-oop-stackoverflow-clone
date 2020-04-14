@@ -28,6 +28,50 @@ class FaiyazQuery extends FaiyazConnection
         }
     }
 
+    public function get($table, $data, $where = null)
+    {
+        try {
+            
+            //set column
+            $columnName = join(',', $data);
+
+            //check if where is not null
+            if ($where != null) {
+                $whereFields = null;
+                foreach ($where as $key => $value) {
+                    $whereFields .= "$key = :$key,";
+                }
+
+                 //Trim the right side of the where field to avoid silly error
+                $whereFields = rtrim($whereFields, ',');
+
+                //set the where field
+                $whereFields = "WHERE $whereFields";
+            } else {
+                $whereFields = null;
+            }
+
+            //statement and prepare
+            $sql = "SELECT $columnName FROM $table $whereFields";
+            $stmt = $this->connect()->prepare($sql);
+
+            //check if where is empty or not then conditonally bind value and execute
+            if ($where != null) {
+                foreach ($where as $key => $value) {
+                    $stmt->bindValue(":$key", $value);
+                }
+            }
+
+            $stmt->execute();
+
+            //If where is empty then it will return all the row from database as array
+            return $stmt->fetchAll();
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
     ////To use these method you have to pass these 3 param and you can easily update your database info
     public function update($table, $data, $where)
     {
@@ -38,15 +82,16 @@ class FaiyazQuery extends FaiyazConnection
                 $columns .= "$key = :$key,";
             }
 
-            //Trim the right side of the column for avoid silly mistakes
+            //Trim the right side of the column to avoid silly error
             $columns = rtrim($columns, ',');
 
-            //se Where
+            //set Where
             $whereColumns = null;
             foreach ($where as $key => $value) {
                 $whereColumns .= "$key = :$key,";
             }
 
+            //Trim the right side of the column to avoid silly error
             $whereColumns = rtrim($whereColumns, ',');
 
             //prepare Statement
@@ -71,4 +116,5 @@ class FaiyazQuery extends FaiyazConnection
 }
 
 // $user = new FaiyazQuery();
-// $user->update('users', $data = ['username' => 'Faiyaz15', 'password' => 'Passsword15'], $where = ['id' => 15]);
+// $printUser = $user->get('users', ['username', 'password'] , ['id' => 18]);
+// print_r($printUser);
