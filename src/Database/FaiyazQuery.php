@@ -28,10 +28,10 @@ class FaiyazQuery extends FaiyazConnection
         }
     }
 
-    public function get($table, $data, $where = null)
+    public function get($table, array $data, $where = null)
     {
         try {
-            
+
             //set column
             $columnName = join(',', $data);
 
@@ -42,7 +42,7 @@ class FaiyazQuery extends FaiyazConnection
                     $whereFields .= "$key = :$key,";
                 }
 
-                 //Trim the right side of the where field to avoid silly error
+                //Trim the right side of the where field to avoid silly error
                 $whereFields = rtrim($whereFields, ',');
 
                 //set the where field
@@ -73,7 +73,7 @@ class FaiyazQuery extends FaiyazConnection
     }
 
     ////To use these method you have to pass these 3 param and you can easily update your database info
-    public function update($table, $data, $where)
+    public function update($table, array $data, $where)
     {
         try {
             //set columns
@@ -113,8 +113,35 @@ class FaiyazQuery extends FaiyazConnection
             echo $e->getMessage();
         }
     }
+
+    public function delete($table, $where)
+    {
+        try {
+            //set Where 
+            $whereColumns = null;
+            foreach ($where as $key => $value) {
+                $whereColumns .= "$key = :$key,";
+            }
+
+            //trim the right side of the where column to avoid silly errors
+            $whereColumns = rtrim($whereColumns, ',');
+
+            //prepare the statement
+            $sql = "DELETE FROM $table WHERE $whereColumns";
+            $stmt = $this->connect()->prepare($sql);
+
+            //binding value through foreach loop
+            foreach ($where as $key => $value) {
+                $stmt->bindValue(":$key", $value);
+            }
+
+            $stmt->execute();
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 }
 
 // $user = new FaiyazQuery();
-// $printUser = $user->get('users', ['username', 'password'] , ['id' => 18]);
-// print_r($printUser);
+// $user->delete('users', ['id' => 8]);
