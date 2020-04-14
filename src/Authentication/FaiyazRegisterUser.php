@@ -4,6 +4,10 @@ namespace StackOverflowClone\Src\Authentication;
 use PDO;
 use PDOException;
 
+namespace src\Authentication;
+
+use PDO;
+
 class FaiyazRegisterUser
 {
     private $db_username = "root";
@@ -11,14 +15,14 @@ class FaiyazRegisterUser
     public $connection;
 
     public function __construct()
-    {    
+    {
         $this->connection = new PDO('mysql:host=localhost;dbname=stack_overflow_clone', $this->db_username, $this->db_password);
     }
 
     public function register($username, $password)
     {
-        try{
-            
+        try {
+
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
             $stmt = $this->connection->prepare("INSERT INTO `users`(username,password) VALUES (:username,:password)");
@@ -27,8 +31,7 @@ class FaiyazRegisterUser
             $stmt->execute();
 
             return $stmt;
-
-        }catch(PDOException $e){
+        } catch (\PDOException $e) {
             echo $e->getMessage();
         }
     }

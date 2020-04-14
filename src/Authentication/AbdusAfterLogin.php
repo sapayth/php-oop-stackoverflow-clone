@@ -1,8 +1,9 @@
 <?php
 
-namespace StackOverflowClone\Src\Authentication;
+namespace src\Authentication;
 
-class AbdusAfterLogin{
+class AbdusAfterLogin
+{
     public function __construct()
     {
         session_start();
@@ -10,13 +11,15 @@ class AbdusAfterLogin{
         $_SESSION['username'] = false;
     }
 
-    public function setAuthenticate($usename){
+    public function setAuthenticate($usename)
+    {
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $usename;
         return true;
     }
 
-    public function logout(){
+    public function logout()
+    {
         unset($_SESSION['loggedin']);
         unset($_SESSION['username']);
         session_destroy();
@@ -29,10 +32,9 @@ class AbdusAfterLogin{
 
     public function checkIfAuthenticated($usename)
     {
-        if($this->setAuthenticate($usename)){
+        if ($this->setAuthenticate($usename)) {
             return true;
         }
         return false;
     }
 }
-

@@ -4,6 +4,10 @@ namespace StackOverflowClone\Src\Database;
 use Exception;
 use PDO;
 
+namespace src\Database;
+
+use PDO;
+
 class AtikConnection
 {
     protected $db;
@@ -16,7 +20,6 @@ class AtikConnection
         $this->password = $password;
         $this->database = $database;
         $this->connect();
-
     }
 
     public function __sleep()
@@ -41,16 +44,15 @@ class AtikConnection
         try {
             $this->db = new \PDO($dsn, $this->username, $this->password, $options);
             #echo "Connected";
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             die("Connection failed" . $e->getMessage());
         }
-
     }
 
-    public function getConnection(){
-        if(!isset($this->db))
+    public function getConnection()
+    {
+        if (!isset($this->db))
             $this->connect();
         return $this->db;
     }
-
 }
