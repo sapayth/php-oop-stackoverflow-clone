@@ -1,9 +1,4 @@
 <?php
-namespace StackOverflowClone\Src\Database;
-
-use Exception;
-use PDO;
-
 namespace src\Database;
 
 use PDO;
@@ -11,7 +6,10 @@ use PDO;
 class AtikConnection
 {
     protected $db;
-    private $hostname, $username, $password, $database;
+    private $hostname;
+    private $username;
+    private $password;
+    private $database;
 
     public function __construct($hostname, $username, $password, $database)
     {
@@ -51,8 +49,9 @@ class AtikConnection
 
     public function getConnection()
     {
-        if (!isset($this->db))
+        if (!isset($this->db)) {
             $this->connect();
+        }
         return $this->db;
     }
 }
