@@ -28,44 +28,35 @@ class FaiyazQuery extends FaiyazConnection
         }
     }
 
-    public function get($table, array $data, $where = null)
+    //By using these get method you can easily fetch all the data from the table as associative array
+    public function get($table)
     {
         try {
-
-            //set column
-            $columnName = join(',', $data);
-
-            //check if where is not null
-            if ($where != null) {
-                $whereFields = null;
-                foreach ($where as $key => $value) {
-                    $whereFields .= "$key = :$key,";
-                }
-
-                //Trim the right side of the where field to avoid silly error
-                $whereFields = rtrim($whereFields, ',');
-
-                //set the where field
-                $whereFields = "WHERE $whereFields";
-            } else {
-                $whereFields = null;
-            }
-
             //statement and prepare
-            $sql = "SELECT $columnName FROM $table $whereFields";
+            $sql = "SELECT * FROM $table";
             $stmt = $this->connect()->prepare($sql);
-
-            //check if where is empty or not then conditonally bind value and execute
-            if ($where != null) {
-                foreach ($where as $key => $value) {
-                    $stmt->bindValue(":$key", $value);
-                }
-            }
 
             $stmt->execute();
 
             //If where is empty then it will return all the row from database as array
             return $stmt->fetchAll();
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    // By using getById method you can easily fetch a specific row from table as a associative array
+    public function getById($table, $id)
+    {
+        try {
+            //Prepare the statement
+            $sql = "SELECT * FROM $table WHERE id = ?";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute([$id]);
+
+            //fetch data
+            return $stmt->fetch();
 
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -117,7 +108,7 @@ class FaiyazQuery extends FaiyazConnection
     public function delete($table, $where)
     {
         try {
-            //set Where 
+            //set Where
             $whereColumns = null;
             foreach ($where as $key => $value) {
                 $whereColumns .= "$key = :$key,";
@@ -141,7 +132,9 @@ class FaiyazQuery extends FaiyazConnection
             echo $e->getMessage();
         }
     }
+
 }
 
-// $user = new FaiyazQuery();
-// $user->delete('users', ['id' => 8]);
+$user = new FaiyazQuery();
+$printUser = $user->delete('users', ['id' => 13]);
+print_r($printUser);
