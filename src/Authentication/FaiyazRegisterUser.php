@@ -1,31 +1,19 @@
 <?php
 namespace StackOverflowClone\Src\Authentication;
 
-use PDO;
-use PDOException;
+use StackOverflowClone\Src\Database\FaiyazConnection;
 
-namespace src\Authentication;
+include_once '../../autoload.php';
 
-use PDO;
-
-class FaiyazRegisterUser
+class FaiyazRegisterUser extends FaiyazConnection
 {
-    private $db_username = "root";
-    private $db_password = "";
-    public $connection;
-
-    public function __construct()
-    {
-        $this->connection = new PDO('mysql:host=localhost;dbname=stack_overflow_clone', $this->db_username, $this->db_password);
-    }
-
-    public function register($username, $password)
+    public function register($username = 'asif', $password = 'Pass1436')
     {
         try {
 
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-            $stmt = $this->connection->prepare("INSERT INTO `users`(username,password) VALUES (:username,:password)");
+            $stmt = $this->connect()->prepare("INSERT INTO `users`(username,password) VALUES (:username,:password)");
             $stmt->bindParam(":username", $username);
             $stmt->bindParam(":password", $hashed_password);
             $stmt->execute();
@@ -36,3 +24,6 @@ class FaiyazRegisterUser
         }
     }
 }
+
+// $user = new FaiyazRegisterUser();
+// $user->register();
