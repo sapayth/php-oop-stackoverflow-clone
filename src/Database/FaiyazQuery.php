@@ -29,7 +29,7 @@ class FaiyazQuery extends FaiyazConnection
     }
 
     //By using these get method you can easily fetch all the data from the table as associative array
-    public function get($table)
+    public function getAll($table)
     {
         try {
             //statement and prepare
@@ -105,6 +105,22 @@ class FaiyazQuery extends FaiyazConnection
         }
     }
 
+    //Bu using this method you can easily delete all rows on the table by passing just table name
+    public function deleteAll($table)
+    {
+        try {
+            //Prepare the statement
+            $sql = "DELETE FROM $table";
+            $stmt = $this->connect()->prepare($sql);
+
+            //execute the statement
+            $stmt->execute();
+            
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
     //Using this method you can delete a row of a table by passing the table name and username
     public function deleteById($table, $id)
     {
@@ -115,15 +131,13 @@ class FaiyazQuery extends FaiyazConnection
             $stmt->execute([$id]);
 
             //execute the prepared statement
-             $stmt->execute();
+            $stmt->execute();
 
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
-
 }
 
-$user = new FaiyazQuery();
-$printUser = $user->deleteById('users', 10);
-print_r($printUser);
+$post = new FaiyazQuery(); 
+$post->deleteAll('posts');
