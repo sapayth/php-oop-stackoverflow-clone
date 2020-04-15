@@ -121,7 +121,7 @@ class FaiyazQuery extends FaiyazConnection
         }
     }
 
-    //Using this method you can delete a row of a table by passing the table name and username
+    //Using this method you can delete a row of a table by passing the table name and row id
     public function deleteById($table, $id)
     {
         try {
@@ -139,5 +139,5 @@ class FaiyazQuery extends FaiyazConnection
     }
 }
 
-$post = new FaiyazQuery(); 
-$post->deleteAll('posts');
+// $post = new FaiyazQuery(); 
+// $post->deleteAll('posts');
