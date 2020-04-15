@@ -115,7 +115,7 @@ class FaiyazQuery extends FaiyazConnection
 
             //execute the statement
             $stmt->execute();
-            
+
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
@@ -137,7 +137,20 @@ class FaiyazQuery extends FaiyazConnection
             echo $e->getMessage();
         }
     }
+
+    public function truncate($table)
+    {
+        try {
+            $sql = "TRUNCATE TABLE $table";
+            $stmt = $this->connect()->prepare($sql);
+            
+            $stmt->execute();
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 }
 
-// $post = new FaiyazQuery(); 
+// $post = new FaiyazQuery();
 // $post->deleteAll('posts');
