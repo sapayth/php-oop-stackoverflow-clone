@@ -1,12 +1,8 @@
 <?php
 namespace StackOverflowClone\Src\Authentication;
 
-Class ShohanRegisterAndAuthenticateUser
+namespace src\Authentication;
+
+class ShohanRegisterAndAuthenticateUser
 {
-
-
-
 }
-
-
-?>
