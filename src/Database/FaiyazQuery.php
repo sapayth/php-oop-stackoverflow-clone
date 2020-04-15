@@ -105,28 +105,17 @@ class FaiyazQuery extends FaiyazConnection
         }
     }
 
-    public function delete($table, $where)
+    //Using this method you can delete a row of a table by passing the table name and username
+    public function deleteById($table, $id)
     {
         try {
-            //set Where
-            $whereColumns = null;
-            foreach ($where as $key => $value) {
-                $whereColumns .= "$key = :$key,";
-            }
-
-            //trim the right side of the where column to avoid silly errors
-            $whereColumns = rtrim($whereColumns, ',');
-
-            //prepare the statement
-            $sql = "DELETE FROM $table WHERE $whereColumns";
+            //Prepare the statement
+            $sql = "DELETE FROM $table WHERE id = ?";
             $stmt = $this->connect()->prepare($sql);
+            $stmt->execute([$id]);
 
-            //binding value through foreach loop
-            foreach ($where as $key => $value) {
-                $stmt->bindValue(":$key", $value);
-            }
-
-            $stmt->execute();
+            //execute the prepared statement
+             $stmt->execute();
 
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -136,5 +125,5 @@ class FaiyazQuery extends FaiyazConnection
 }
 
 $user = new FaiyazQuery();
-$printUser = $user->delete('users', ['id' => 13]);
+$printUser = $user->deleteById('users', 10);
 print_r($printUser);
