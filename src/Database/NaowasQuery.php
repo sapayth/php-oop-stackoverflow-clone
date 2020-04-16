@@ -1,4 +1,8 @@
 <?php
+namespace Src\Database;
+
+use PDO;
+use PDOException;
 
 class NaowasQuery
 {
