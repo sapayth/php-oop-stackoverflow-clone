@@ -1,5 +1,5 @@
 <?php
-namespace src\Database;
+namespace Src\Database;
 
 use PDO;
 
@@ -30,7 +30,7 @@ class AtikConnection
         $this->connect();
     }
 
-    private function connect()
+    public function connect()
     {
         $dsn = "mysql:host={$this->hostname};
                 dbname={$this->database};";
@@ -40,7 +40,7 @@ class AtikConnection
         ];
 
         try {
-            $this->db = new \PDO($dsn, $this->username, $this->password, $options);
+            $this->db = new PDO($dsn, $this->username, $this->password, $options);
             #echo "Connected";
         } catch (\Exception $e) {
             die("Connection failed" . $e->getMessage());
