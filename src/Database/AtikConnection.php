@@ -1,17 +1,15 @@
 <?php
-namespace StackOverflowClone\Src\Database;
-
-use Exception;
-use PDO;
-
-namespace src\Database;
+namespace Src\Database;
 
 use PDO;
 
 class AtikConnection
 {
     protected $db;
-    private $hostname, $username, $password, $database;
+    private $hostname;
+    private $username;
+    private $password;
+    private $database;
 
     public function __construct($hostname, $username, $password, $database)
     {
@@ -32,7 +30,7 @@ class AtikConnection
         $this->connect();
     }
 
-    private function connect()
+    public function connect()
     {
         $dsn = "mysql:host={$this->hostname};
                 dbname={$this->database};";
@@ -42,7 +40,7 @@ class AtikConnection
         ];
 
         try {
-            $this->db = new \PDO($dsn, $this->username, $this->password, $options);
+            $this->db = new PDO($dsn, $this->username, $this->password, $options);
             #echo "Connected";
         } catch (\Exception $e) {
             die("Connection failed" . $e->getMessage());
@@ -51,8 +49,9 @@ class AtikConnection
 
     public function getConnection()
     {
-        if (!isset($this->db))
+        if (!isset($this->db)) {
             $this->connect();
+        }
         return $this->db;
     }
 }

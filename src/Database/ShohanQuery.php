@@ -1,5 +1,4 @@
 <?php
-
 namespace src\Database;
 
 use src\Database\ShohanConnection;
