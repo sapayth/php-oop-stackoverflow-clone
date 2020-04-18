@@ -26,7 +26,7 @@ class User extends FaiyazQuery
             $sql = "SELECT * FROM posts WHERE user_id = $user_id";
             $stmt = $this->connect()->prepare($sql);
             $stmt->execute([$user_id]);
-            return $stmt->fetchAll();
+            return $stmt->fetchAll();   
 
         }catch (PDOException $e){
             echo $e->getMessage();
@@ -57,5 +57,5 @@ class User extends FaiyazQuery
         }
         return false;
     }
-    
+
 }
