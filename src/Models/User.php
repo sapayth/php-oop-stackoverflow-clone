@@ -49,4 +49,13 @@ class User extends FaiyazQuery
         $_SESSION['username'] = $username;
         return true;
     }
+
+    public function checkIfAuthenticated($username)
+    {
+        if ($this->setAuthenticate($username)) {
+            return true;
+        }
+        return false;
+    }
+    
 }
