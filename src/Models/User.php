@@ -32,4 +32,14 @@ class User extends FaiyazQuery
             echo $e->getMessage();
         }
     }
+
+    public function getUserDetails($id)
+    {
+        try{
+            $user = $this->getById('users', $id);
+            return $user;
+        }catch (PDOException $e){
+            echo $e->getMessage();
+        }
+    }
 }
