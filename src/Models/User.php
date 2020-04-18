@@ -42,4 +42,11 @@ class User extends FaiyazQuery
             echo $e->getMessage();
         }
     }
+
+    public function setAuthenticate($username)
+    {
+        $_SESSION['loggedin'] = true;
+        $_SESSION['username'] = $username;
+        return true;
+    }
 }
