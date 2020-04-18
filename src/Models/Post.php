@@ -20,7 +20,19 @@ class Post extends FaiyazQuery
             echo $e->getMessage();
         }
     }
+
+    public function postDetails($id)
+    {
+        try {
+
+            $posts = $this->getById('posts', $id);
+            return $posts;
+
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+    }
 }
 
-$post = new Post();
-//print_r($post->allPost());
+// $post = new Post();
+// print_r($post->postDetails(1));
