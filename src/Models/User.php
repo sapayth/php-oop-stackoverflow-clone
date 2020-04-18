@@ -18,4 +18,18 @@ class User extends FaiyazQuery
            echo $e->getMessage();
        }
     }
+
+    public function getPostById($user_id)
+    {
+        try{
+
+            $sql = "SELECT * FROM posts WHERE user_id = $user_id";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute([$user_id]);
+            return $stmt->fetchAll();
+
+        }catch (PDOException $e){
+            echo $e->getMessage();
+        }
+    }
 }
