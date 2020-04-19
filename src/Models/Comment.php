@@ -20,5 +20,14 @@ class Comment extends FaiyazQuery
            echo $e->getMessage();
         }
     }
+
+    public function commentDetails($id)
+    {
+        $comments = $this->getById('comments', $id);
+        return $comments;
+    }
+
 }
 
+$comments = new Comment();
+print_r($comments->commentDetails('1'));
