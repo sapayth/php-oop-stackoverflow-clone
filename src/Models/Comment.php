@@ -17,17 +17,36 @@ class Comment extends FaiyazQuery
             return $comments;
 
         } catch (PDOException $e) {
-           echo $e->getMessage();
+            echo $e->getMessage();
         }
     }
 
     public function commentDetails($id)
     {
-        $comments = $this->getById('comments', $id);
-        return $comments;
+        try {
+
+            $comments = $this->getById('comments', $id);
+            return $comments;
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function commentPost($id)
+    {
+        try {
+
+            $sql = "SELECT post_id FROM comments WHERE id = $id";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute([$id]);
+
+            return $stmt->fetch();
+
+        } catch (PDOException $e) {
+           echo $e->getMessage();
+        }
     }
 
 }
 
-$comments = new Comment();
-print_r($comments->commentDetails('1'));

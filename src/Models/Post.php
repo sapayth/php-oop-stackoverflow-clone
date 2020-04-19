@@ -40,7 +40,7 @@ class Post extends FaiyazQuery
             $sql = "SELECT user_id FROM posts WHERE id = $post_id";
             $stmt = $this->connect()->prepare($sql);
             $stmt->execute([$post_id]);
-            return $stmt->fetchAll();
+            return $stmt->fetch();
 
         }catch(PDOException $e){
             echo $e->getMessage();
