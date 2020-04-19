@@ -32,7 +32,18 @@ class Post extends FaiyazQuery
             $e->getMessage();
         }
     }
-}
 
-// $post = new Post();
-// print_r($post->postDetails(1));
+    public function postUser($post_id)
+    {
+        try{
+
+            $sql = "SELECT user_id FROM posts WHERE id = $post_id";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute([$post_id]);
+            return $stmt->fetchAll();
+
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+}
