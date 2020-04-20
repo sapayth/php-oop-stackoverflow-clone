@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Authentication;
+namespace Src\Authentication;
 
 class AbdusAfterLogin
 {

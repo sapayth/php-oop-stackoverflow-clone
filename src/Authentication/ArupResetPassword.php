@@ -1,17 +1,14 @@
 <?php
+namespace Src\Authentication;
 
-
-spl_autoload_register(function($class_name){
-    echo "$class_name"."<br/>";
-    include "Classes/".$class_name.".php";
-});
-
+use PDO;
+use Src\Database\AtikConnection;
 
 class ArupResetPassword{
 
     private $db;
     public function __construct(){
-        $this->db = new AtikConnection();
+        //$this->db = new AtikConnection();
          
     }
 
@@ -46,11 +43,11 @@ class ArupResetPassword{
 
         $result = $this->getForgotPassword($email);
         if($result){
-             Session::init();
-            Session::set("login",false);
-            Session::set("id",$result->id);
-            Session::set("name",$result->name);
-            Session::set("username",$result->username);
+            // Session::init();
+            // Session::set("login",false);
+            // Session::set("id",$result->id);
+            // Session::set("name",$result->name);
+            // Session::set("username",$result->username);
             header("Location:create-reset-password.php");
         }else{
             $msg = "<div class='alert alert-danger'><strong>Error!</strong> Data Not Found!</div>";
@@ -96,7 +93,7 @@ class ArupResetPassword{
                 $result =  $query->execute();
         if($result){
 
-            Session::set("password_change","<div class='alert alert-success'><strong>Success!</strong> Password Change!</div>");
+            //Session::set("password_change","<div class='alert alert-success'><strong>Success!</strong> Password Change!</div>");
             header("Location:login.php");
         }else{
             $msg = "<div class='alert alert-danger'><strong>Error!</strong> Not Updated !</div>";
