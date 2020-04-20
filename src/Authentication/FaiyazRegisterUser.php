@@ -1,9 +1,7 @@
 <?php
-namespace StackOverflowClone\Src\Authentication;
+namespace Src\Authentication;
 
-use StackOverflowClone\Src\Database\FaiyazConnection;
-
-include_once '../../autoload.php';
+use Src\Database\FaiyazConnection;
 
 class FaiyazRegisterUser extends FaiyazConnection
 {

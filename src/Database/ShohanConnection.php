@@ -1,9 +1,5 @@
 <?php
-namespace StackOverflowClone\Src\Database;
-
-use PDO;
-
-namespace src\Database;
+namespace Src\Database;
 
 use PDO;
 

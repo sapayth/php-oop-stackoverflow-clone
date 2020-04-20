@@ -1,9 +1,7 @@
 <?php
-
-namespace StackOverflowClone\Src\Database;
+namespace Src\Database;
 
 use PDOException;
-use StackOverflowClone\Src\Database\FaiyazConnection;
 
 include_once '../../autoload.php';
 
