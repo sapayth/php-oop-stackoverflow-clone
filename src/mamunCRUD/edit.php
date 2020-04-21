@@ -51,6 +51,9 @@
       <div class="my-3 p-3 bg-white rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-0">Ask Your Question</h6>
 
+
+        
+        
         <?php 
         include 'class/mamuncrud.php';
 
@@ -78,6 +81,9 @@
 
         ?>
 
+
+        
+        
         <form action="" method="post">
           <div class="form-group">
             <input type="text" class="form-control" name="title" placeholder="Title" value="<?php echo $row['title']; ?>">
