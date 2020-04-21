@@ -2,7 +2,7 @@
 
 namespace Src\Authentication;
 
-session_start();
+session_start(); // I am starting session here for testing purpose! this is not recommended
 
 use PDOException;
 use Src\Database\FaiyazConnection;
@@ -12,12 +12,12 @@ include_once '../../autoload.php';
 class FaiyazRoleBasedAuth extends FaiyazConnection
 {
     //register method
-    public function register($role_id = 1, $username , $password)
+    public function register($role_id = 1, $username, $password)
     {
-        try{
+        try {
 
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            
+
             $sql = "INSERT INTO `users` (role_id, username, password) VALUES (:role_id, :username, :password)";
             $stmt = $this->connect()->prepare($sql);
             $stmt->bindParam(':role_id', $role_id);
@@ -27,7 +27,7 @@ class FaiyazRoleBasedAuth extends FaiyazConnection
 
             return $stmt;
 
-        } catch(PDOException $e){
+        } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
@@ -42,18 +42,19 @@ class FaiyazRoleBasedAuth extends FaiyazConnection
             $stmt->execute(array(':username' => $username));
             $userRow = $stmt->fetch();
 
-            if($stmt->rowCount() > 0 ){
+            if ($stmt->rowCount() > 0) {
 
-                if(password_verify($password, $userRow['password'])){
+                if (password_verify($password, $userRow['password'])) {
 
                     $_SESSION['loggedin'] = true;
                     $_SESSION['user_id'] = $userRow['id'];
                     $_SESSION['username'] = $userRow['username'];
-                    
+
                     $this->showUerData();
 
-                   return true;
-                }else{
+                    return true;
+
+                } else {
                     return false;
                 }
             }
