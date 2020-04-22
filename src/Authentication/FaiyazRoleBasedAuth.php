@@ -12,7 +12,7 @@ include_once '../../autoload.php';
 class FaiyazRoleBasedAuth extends FaiyazConnection
 {
     //register method
-    public function register($role_id = 1, $username, $password)
+    public function register($role_id = 2, $username = "Bristy", $password = "Pass1436")
     {
         try {
 
@@ -46,13 +46,20 @@ class FaiyazRoleBasedAuth extends FaiyazConnection
 
                 if (password_verify($password, $userRow['password'])) {
 
-                    $_SESSION['loggedin'] = true;
-                    $_SESSION['user_id'] = $userRow['id'];
-                    $_SESSION['username'] = $userRow['username'];
+                    if(!$this->checkIfAuthenticated()){
 
-                    $this->showUerData();
+                        return false;
 
-                    return true;
+                    } else{
+
+                        $_SESSION['loggedin'] = true;
+                        $_SESSION['user_id'] = $userRow['id'];
+                        $_SESSION['username'] = $userRow['username'];
+                        
+                        $this->showUerData();
+
+                        return true;
+                    }  
 
                 } else {
                     return false;
@@ -67,5 +74,27 @@ class FaiyazRoleBasedAuth extends FaiyazConnection
     public function showUerData()
     {
         echo "You are logged in, " . $_SESSION['username'];
+        echo "<br>";
     }
+
+    public function setAuthenticate()
+    {
+        $_SESSION['loggedin'] = true;
+        $_SESSION['user_id']  = true;
+        $_SESSION['username'] = true;
+        return true;
+    }
+    
+    public function checkIfAuthenticated()
+    {
+        if ($this->setAuthenticate()) {
+            return true;
+        }
+        return false;
+    }
+    
 }
+
+$user = new FaiyazRoleBasedAuth();
+$user->login();
+
