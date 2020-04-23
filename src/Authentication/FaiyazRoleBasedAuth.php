@@ -46,20 +46,13 @@ class FaiyazRoleBasedAuth extends FaiyazConnection
 
                 if (password_verify($password, $userRow['password'])) {
 
-                    if(!$this->checkIfAuthenticated()){
+                    $_SESSION['loggedin'] = true;
+                    $_SESSION['user_id'] = $userRow['id'];
+                    $_SESSION['username'] = $userRow['username'];
 
-                        return false;
+                    $this->showUerData();
 
-                    } else{
-
-                        $_SESSION['loggedin'] = true;
-                        $_SESSION['user_id'] = $userRow['id'];
-                        $_SESSION['username'] = $userRow['username'];
-                        
-                        $this->showUerData();
-
-                        return true;
-                    }  
+                    return true;
 
                 } else {
                     return false;
@@ -80,11 +73,11 @@ class FaiyazRoleBasedAuth extends FaiyazConnection
     public function setAuthenticate()
     {
         $_SESSION['loggedin'] = true;
-        $_SESSION['user_id']  = true;
+        $_SESSION['user_id'] = true;
         $_SESSION['username'] = true;
         return true;
     }
-    
+
     public function checkIfAuthenticated()
     {
         if ($this->setAuthenticate()) {
@@ -92,9 +85,6 @@ class FaiyazRoleBasedAuth extends FaiyazConnection
         }
         return false;
     }
-    
-}
 
-$user = new FaiyazRoleBasedAuth();
-$user->login();
+}
 
