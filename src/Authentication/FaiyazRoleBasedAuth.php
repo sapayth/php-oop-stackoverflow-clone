@@ -48,7 +48,7 @@ class FaiyazRoleBasedAuth extends FaiyazConnection
     }
 
     //login method
-    public function login($username = 'Faiyaz', $password = 'pass1436')
+    public function login($username, $password)
     {
         try {
 
@@ -102,7 +102,3 @@ class FaiyazRoleBasedAuth extends FaiyazConnection
     }
 
 }
-
-$user = new FaiyazRoleBasedAuth();
-
-$user->register();

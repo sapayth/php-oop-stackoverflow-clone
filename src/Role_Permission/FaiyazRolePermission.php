@@ -40,7 +40,9 @@ class FaiyazRolePermission extends FaiyazQuery
            $e->getMessage();
         }
     }
-}
 
-$perm = new FaiyazRolePermission();
-$perm->createPermission();
+    public function checkPermission()
+    {
+        
+    }
+}
