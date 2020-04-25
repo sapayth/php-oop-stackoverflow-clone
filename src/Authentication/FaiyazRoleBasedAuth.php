@@ -13,7 +13,7 @@ class FaiyazRoleBasedAuth extends FaiyazConnection
 {
 
     //register method
-    public function register($role_id = 2, $username = "test", $password = "Pass1436")
+    public function register($role_id = 2, $username = "User", $password = "Pass1436")
     {
         try {
 
@@ -31,13 +31,13 @@ class FaiyazRoleBasedAuth extends FaiyazConnection
             $stmt->execute();
 
 
-            $user_id = $db->lastInsertId();
+            $last_user_id = $db->lastInsertId();
 
             if ($stmt->rowCount() > 0) {
 
                 $sql = "INSERT INTO role_user (user_id, role_id) VALUES (:user_id, :role_id)";
                 $stmt = $db->prepare($sql);
-                $stmt->bindParam(':user_id', $user_id);
+                $stmt->bindParam(':user_id', $last_user_id);
                 $stmt->bindParam(':role_id', $role_id);
                 $stmt->execute();
 
