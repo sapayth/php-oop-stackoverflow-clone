@@ -11,22 +11,37 @@ include_once '../../autoload.php';
 
 class FaiyazRoleBasedAuth extends FaiyazConnection
 {
+
     //register method
-    public function register($role_id = 2, $username = "Bristy", $password = "Pass1436")
+    public function register($role_id = 2, $username = "test", $password = "Pass1436")
     {
         try {
 
+            $db = $this->connect();
+
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-            $sql = "INSERT INTO `users` (role_id, username, password) VALUES (:role_id, :username, :password)";
-            $stmt = $this->connect()->prepare($sql);
+            $sql = "INSERT INTO users (role_id, username, password) VALUES (:role_id, :username, :password)";
+
+            $stmt = $db->prepare($sql);
             $stmt->bindParam(':role_id', $role_id);
             $stmt->bindParam(':username', $username);
             $stmt->bindParam(':password', $hashedPassword);
+
             $stmt->execute();
 
-            return $stmt;
 
+            $user_id = $db->lastInsertId();
+
+            if ($stmt->rowCount() > 0) {
+
+                $sql = "INSERT INTO role_user (user_id, role_id) VALUES (:user_id, :role_id)";
+                $stmt = $db->prepare($sql);
+                $stmt->bindParam(':user_id', $user_id);
+                $stmt->bindParam(':role_id', $role_id);
+                $stmt->execute();
+
+            }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
@@ -88,3 +103,6 @@ class FaiyazRoleBasedAuth extends FaiyazConnection
 
 }
 
+$user = new FaiyazRoleBasedAuth();
+
+$user->register();
