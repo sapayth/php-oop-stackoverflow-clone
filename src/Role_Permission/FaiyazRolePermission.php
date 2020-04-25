@@ -11,7 +11,7 @@ include_once '../../autoload.php';
 class FaiyazRolePermission extends FaiyazRoleBasedAuth
 {
 
-    public function createPermission($permission = 'Delete')
+    public function createPermission($permission = 'User can Delete')
     {
         try{
 
@@ -24,7 +24,7 @@ class FaiyazRolePermission extends FaiyazRoleBasedAuth
 
             $lastPermissionId = $db->lastInsertId();
 
-            $role_id = 1;
+            $role_id = 2;
 
             if($stmt->rowCount() > 0){
 
@@ -41,16 +41,43 @@ class FaiyazRolePermission extends FaiyazRoleBasedAuth
         }
     }
 
-    public function checkRole()
+    public function getPermissionId()
     {
-        $user_id = $_SESSION['user_id'];
-
-        $db = $this->connect();
-        $sql = "SELECT role_id FROM role_user WHERE user_id = $user_id";
-        $stmt = $db->prepare($sql);
-        $stmt->execute([$user_id]);
-        return $stmt->fetch();
         
+        $db = $this->connect();
+        $sql = "SELECT id FROM permissions WHERE id = 3";
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        
+        $permission_id = $stmt->fetchColumn(0);
+
+        return $permission_id;
     }
 
+    public function DeletePost()
+    {
+        try {
+
+            $db = $this->connect();
+
+            $authenticated_role_id = $this->checkRole();
+            $permission_id = $this->getPermissionId();
+
+            $sql = "SELECT * FROM role_permission WHERE role_id = :role_id AND permission_id= :permission_id";
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':role_id', $authenticated_role_id);
+            $stmt->bindParam(':permission_id', $permission_id);
+            $stmt->execute();
+
+            if($stmt->rowCount() > 0){
+                echo "You are authorize to delete";
+            }else{
+                echo "You are not";
+            }
+
+
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+    }
 }

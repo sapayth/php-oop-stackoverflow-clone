@@ -101,4 +101,18 @@ class FaiyazRoleBasedAuth extends FaiyazConnection
         return false;
     }
 
+    public function checkRole()
+    {
+        $user_id = $_SESSION['user_id'];
+
+        $db = $this->connect();
+        $sql = "SELECT role_id FROM role_user WHERE user_id = $user_id";
+        $stmt = $db->prepare($sql);
+        $stmt->execute([$user_id]);
+        
+        $role_id = $stmt->fetchColumn(0);
+
+        return $role_id;
+    }
+
 }
