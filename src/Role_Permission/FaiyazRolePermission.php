@@ -8,7 +8,7 @@ use Src\Database\FaiyazQuery;
 
 include_once '../../autoload.php';
 
-class FaiyazRolePermission extends FaiyazQuery
+class FaiyazRolePermission extends FaiyazRoleBasedAuth
 {
 
     public function createPermission($permission = 'Delete')
@@ -41,8 +41,16 @@ class FaiyazRolePermission extends FaiyazQuery
         }
     }
 
-    public function checkPermission()
+    public function checkRole()
     {
+        $user_id = $_SESSION['user_id'];
+
+        $db = $this->connect();
+        $sql = "SELECT role_id FROM role_user WHERE user_id = $user_id";
+        $stmt = $db->prepare($sql);
+        $stmt->execute([$user_id]);
+        return $stmt->fetch();
         
     }
+
 }
