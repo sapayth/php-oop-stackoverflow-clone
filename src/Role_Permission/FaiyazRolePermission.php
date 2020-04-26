@@ -41,17 +41,24 @@ class FaiyazRolePermission extends FaiyazRoleBasedAuth
         }
     }
 
+
+
     public function getPermissionId()
     {
         
+        $authenticated_role_id = $this->checkRole();
+
         $db = $this->connect();
-        $sql = "SELECT id FROM permissions WHERE id = 3";
+        $sql = "SELECT permission_id FROM role_permission INNER JOIN permissions ON permission_id = permissions.id
+                 WHERE role_id = $authenticated_role_id";
         $stmt = $db->prepare($sql);
         $stmt->execute();
         
-        $permission_id = $stmt->fetchColumn(0);
+        if($stmt->rowCount() > 0){
+            $permission_id = $stmt->fetchColumn();
 
-        return $permission_id;
+            return $permission_id;
+        }
     }
 
     public function DeletePost()
