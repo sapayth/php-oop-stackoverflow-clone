@@ -15,7 +15,7 @@ The Class naming Sturcture will be like : YournameClassname example (AtikQuery).
 If your task is Authentication releated then You will do it on src\Authentication folder.
 If your task is Database releated then You will do it on src\Database folder.
 
-# Some Essentialts things you need to know
+# Some Essential things you need to know
 
 In this project for now, We are not doing any Frontend or UI releated work. We are just doing the backend! After finishing backend, we will impliment UI and Frontend code to Use this App. So It is Requested to do not do any Frontend or UI Related code.
 
