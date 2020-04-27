@@ -2,8 +2,6 @@
 
 namespace Src\Authentication;
 
-session_start(); // I am starting session here for testing purpose! this is not recommended
-
 use PDOException;
 use Src\Database\FaiyazConnection;
 
@@ -13,7 +11,7 @@ class FaiyazRoleBasedAuth extends FaiyazConnection
 {
 
     //register method
-    public function register($role_id = 2, $username = "User", $password = "Pass1436")
+    public function register($role_id, $username , $password)
     {
         try {
 
@@ -99,20 +97,6 @@ class FaiyazRoleBasedAuth extends FaiyazConnection
             return true;
         }
         return false;
-    }
-
-    public function checkRole()
-    {
-        $user_id = $_SESSION['user_id'];
-
-        $db = $this->connect();
-        $sql = "SELECT role_id FROM role_user WHERE user_id = $user_id";
-        $stmt = $db->prepare($sql);
-        $stmt->execute([$user_id]);
-        
-        $role_id = $stmt->fetchColumn(0);
-
-        return $role_id;
     }
 
 }

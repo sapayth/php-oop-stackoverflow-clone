@@ -3,65 +3,48 @@
 namespace Src\Role_Permission;
 
 use PDOException;
-use Src\Authentication\FaiyazRoleBasedAuth;
 use Src\Database\FaiyazQuery;
 
 include_once '../../autoload.php';
 
-class FaiyazRolePermission extends FaiyazRoleBasedAuth
+class FaiyazRolePermission extends FaiyazQuery
 {
-
-    public function createPermission($permission = 'User can Delete')
-    {
-        try{
-
-            $db = $this->connect();
-
-            $sql = "INSERT into `permissions` (permission) VALUES (:permission)";
-            $stmt = $db->prepare($sql);
-            $stmt->bindParam(':permission', $permission);
-            $stmt->execute();
-
-            $lastPermissionId = $db->lastInsertId();
-
-            $role_id = 2;
-
-            if($stmt->rowCount() > 0){
-
-                $sql = "INSERT INTO `role_permission` (role_id, permission_id) VALUES (:role_id, :permission_id)";
-                $stmt = $db->prepare($sql);
-                $stmt->bindParam(':role_id',  $role_id);
-                $stmt->bindParam(':permission_id', $lastPermissionId);
-                $stmt->execute();
-
-            }
-
-        }catch(PDOException $e){
-           $e->getMessage();
-        }
-    }
-
-
 
     public function getPermissionId()
     {
-        
-        $authenticated_role_id = $this->checkRole();
 
         $db = $this->connect();
-        $sql = "SELECT permission_id FROM role_permission INNER JOIN permissions ON permission_id = permissions.id
-                 WHERE role_id = $authenticated_role_id";
+        $sql = "SELECT id FROM `permissions` WHERE permission = 'Can_Delete' ";
         $stmt = $db->prepare($sql);
         $stmt->execute();
         
-        if($stmt->rowCount() > 0){
-            $permission_id = $stmt->fetchColumn();
+        $permission_id = $stmt->fetchColumn();
+        
+        return $permission_id;
+        
+    }
 
-            return $permission_id;
+    public function checkRole()
+    {
+        try {
+
+            $user_id = $_SESSION['user_id'];
+
+            $db = $this->connect();
+            $sql = "SELECT role_id FROM role_user WHERE user_id = $user_id";
+            $stmt = $db->prepare($sql);
+            $stmt->execute([$user_id]);
+
+            $role_id = $stmt->fetchColumn(0);
+
+            return $role_id;
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
         }
     }
 
-    public function DeletePost()
+    public function checkPermssion()
     {
         try {
 
@@ -75,16 +58,59 @@ class FaiyazRolePermission extends FaiyazRoleBasedAuth
             $stmt->bindParam(':role_id', $authenticated_role_id);
             $stmt->bindParam(':permission_id', $permission_id);
             $stmt->execute();
+            return $stmt;
 
-            if($stmt->rowCount() > 0){
-                echo "You are authorize to delete";
-            }else{
-                echo "You are not";
+            
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function CreatePost()
+    {
+        try {
+
+            $permission = $this->checkPermssion();
+
+            if ($permission->rowCount() > 0) {
+
+                $data = [
+                    "user_id" => 2,
+                    "title" => "This is role Permission Checek from User",
+                    "body" => "This is role Permission Checek from User Body"
+                ];
+                
+               //Insert Post 
+                $this->insert("posts", $data);
+            } else {
+                echo "You are not Authorize to create Post";
             }
-
 
         } catch (PDOException $e) {
             $e->getMessage();
         }
     }
+
+    // public function DeletePost()
+    // {
+    //     try {
+
+    //         $permission = $this->checkPermssion();
+
+    //         if ($permission->rowCount() > 0) {
+                
+    //             //delete post by specific id
+    //             // $this->deleteById('posts', 5);
+
+    //             echo "You are authorize to delete";
+
+    //         } else {
+    //             echo "You are not Permittedd to delete";
+    //         }
+
+    //     } catch (PDOException $e) {
+    //         $e->getMessage();
+    //     }
+    // }
 }
