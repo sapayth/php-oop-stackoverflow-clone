@@ -1,0 +1,105 @@
+.drg-event-title {
+  margin-bottom: 23px;
+}
+
+.border-top {
+  border-top: 1px solid $border-color;
+  padding-top: 10px;
+}
+
+.fc-state-default {
+  background-color: $brand-white;
+  background-image: none;
+  background-repeat: repeat-x;
+  box-shadow: none;
+  color: $brand-black;
+  text-shadow: none;
+}
+.fc-state-default {
+  border: 1px solid;
+}
+.fc-button {
+  color: inherit;
+  border: 1px solid $border-color;
+  cursor: pointer;
+  display: inline-block;
+  height: 1.9em;
+  line-height: 1.9em;
+  overflow: hidden;
+  padding: 0 0.6em;
+  position: relative;
+  white-space: nowrap;
+}
+.fc-state-active {
+  background-color: $brand-primary;
+  border-color: $brand-primary;
+  color:$brand-white;
+}
+.fc-header-title h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: inherit;
+}
+.fc-content .fc-widget-header,
+.fc-content .fc-widget-content {
+  border-color: $brand-dark;
+  font-weight: normal;
+}
+.fc-border-separate tbody {
+  background-color: $brand-dark;
+}
+.fc-state-highlight {
+  background: none repeat scroll 0 0 #FCF8E3;
+}
+.external-event {
+  padding: 5px 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+.fc-ltr .fc-event-hori.fc-event-end,
+.fc-rtl .fc-event-hori.fc-event-start {
+  border-radius: 2px;
+}
+.fc-event,
+.fc-agenda .fc-event-time,
+.fc-event a {
+  padding: 4px 6px;
+  background-color: $brand-info;
+  border-color: $brand-info;
+}
+.fc-event-time,
+.fc-event-title {
+  color: #717171;
+  padding: 0 1px;
+}
+.ui-calendar .fc-event-time,
+.ui-calendar .fc-event-title {
+  color: $brand-white;
+}
+
+.fc-toolbar .fc-left,
+.fc-toolbar .fc-right{
+  margin-top: 10px;
+}
+
+.fc-toolbar h2 {
+  margin: 10px 0 0;
+  font-size: 20px;
+}
+
+.fc .fc-toolbar>*>* {
+  margin-left: .5em;
+}
+
+.fc-unthemed th {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background: $border-color !important;
+}
+
+.external-event {
+  background: $brand-info;
+  color: $brand-white;
+}

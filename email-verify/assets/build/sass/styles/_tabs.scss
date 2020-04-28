@@ -1,0 +1,83 @@
+.nav-tabs {
+  position: relative;
+  top: 3px;
+  z-index: 10;
+
+    .active {
+        background-color: transparent;
+    }
+
+    > li {
+      > a {
+          transition: all 0.2s;
+        &:hover {
+            color: inherit;
+            background-color: rgba(0, 0, 0, 0.03);
+            border-color: rgba(0, 0, 0, 0.03);
+        }
+      }
+
+      &.active > a {
+        &,
+        &:hover,
+        &:focus {
+            // color: $brand-white;
+            // background-color: $brand-primary;
+            // border-color: $brand-primary;
+        }
+      }
+    }
+
+    &.nav-justified {
+        > .active > a {
+          &,
+          &:hover,
+          &:focus {
+            //   border-color: $brand-primary;
+          }
+        }
+    }
+
+    &.tabs-left {
+        float: left;
+        width: 200px;
+        border-right: none;
+        padding-top: 0;
+        position: relative;
+        z-index: 10;
+        @media (max-width: 640px) {
+            width: 100%;
+        }
+    }
+    &.tabs-right {
+        float: right;
+        width: 200px;
+        border-left: none;
+        padding-top: 0;
+        position: relative;
+        z-index: 10;
+        @media (max-width: 640px) {
+            width: 100%;
+        }
+    }
+
+}
+
+.tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+    padding: 15px;
+
+    &.tab-content-left {
+        display: block;
+        overflow: hidden;
+        border: 1px solid #ddd;
+    }
+    &.tab-content-right {
+        display: block;
+        overflow: hidden;
+        border: 1px solid #ddd;
+    }
+}

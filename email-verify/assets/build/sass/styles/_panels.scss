@@ -1,0 +1,93 @@
+.panel {
+    border-radius: 4px;
+    .panel-heading {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .panel-border {
+      border-bottom: 1px solid $border-color;
+    }
+
+}
+
+// panel-variant($border, $heading-text-color, $heading-bg-color, $heading-border)
+@each $color in $array-brand {
+  // get the color
+  $get-color: map-get($brand-colors, $color);
+  .panel-#{$color} {
+    @include panel-variant($get-color, $brand-white, $get-color, $get-color);
+  }
+}
+
+// panel-accordion
+.panel-accordion {
+  .panel-default {
+    border-radius: 0;
+    border: none;
+    margin-bottom: 10px;
+    box-shadow: none;
+    .panel-heading {
+      background-color: transparent;
+      padding: 0;
+      .panel-title {
+          position: relative;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 1.8;
+        a {
+          padding: 10px 15px;
+          display: block;
+          background-color: transparent;
+          border: 1px solid #ddd;
+          text-decoration: none;
+          &::after {
+            content: "+";
+            // content: "\e648";
+            // font-family: 'icomoon';
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            right: 12px;
+            top: 50%;
+            margin-top: -10px;
+            line-height: 1.1;
+            font-size: 18px;
+            color: inherit;
+            text-align: center;
+          }
+          &:focus {
+            color: inherit;
+          }
+          &[aria-expanded="true"] {
+            color: $brand-white;
+            background-color: $brand-primary;
+            border: 1px solid $brand-primary;
+            &::after {
+              content: "-";
+            //   content: "\e641";
+            //   color: $brand-white;
+            }
+          }
+          &:hover,
+          &:active {
+            color: $brand-white;
+            background-color: $brand-primary;
+            border: 1px solid $brand-primary;
+            &::after {
+            //   color: $brand-white;
+            }
+          }
+        }
+      }
+    }
+
+    .panel-body {
+        border-top: none !important;
+    }
+  }
+}

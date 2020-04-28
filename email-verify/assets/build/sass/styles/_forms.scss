@@ -1,0 +1,115 @@
+.form-control {
+    // border-color: darken($brand-light, 5%);
+    box-shadow: none;
+    &:focus {
+        border-color: $brand-info;
+        outline: 0;
+        box-shadow: none;
+    }
+    &.error {
+        border-color: $brand-danger;
+    }
+
+    + label {
+        font-weight: normal;
+        &.error {
+            color: $brand-danger;
+        }
+    }
+}
+
+.search-dropdown {
+    position: absolute;
+    top: 0;
+    right: 0;
+    .btn {
+        height: 50px;
+        line-height: 20px;
+        padding: 15px;
+    }
+    .dropdown-menu {
+        position: fixed;
+        top: 50px;
+        left: 0;
+        height: 50px;
+        margin-top: 1px;
+        border-radius: 0;
+        padding: 0;
+        padding: 5px;
+        border: 0;
+    }
+    .form-control {
+        height: 40px;
+        font-size: 16px;
+        border: 0;
+    }
+}
+
+//
+.form-variance {
+    .form-group{
+        border-bottom: 1px solid $brand-light;
+        padding-bottom: 15px;
+        &:last-child {
+            border-bottom-color: transparent;
+            padding-bottom: 0;
+        }
+    }
+}
+
+.btn.btn-info.dropdown-toggle {
+  border-left: 1px solid darken($brand-info, 8%);
+}
+
+.btn.btn-success.dropdown-toggle {
+  border-left: 1px solid darken($brand-success, 8%);
+}
+
+.btn.btn-warning.dropdown-toggle {
+  border-left: 1px solid darken($brand-warning, 8%);
+}
+
+.btn.btn-danger.dropdown-toggle {
+  border-left: 1px solid darken($brand-danger, 8%);
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+
+//form wizard
+
+.wizard {
+  > .content {
+    min-height: 150px;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+}
+
+.wizard-long {
+  > .content {
+    min-height: 360px;
+  }
+}
+
+.wizard > .steps .current a, .wizard > .steps .current a:hover, .wizard > .steps .current a:active {
+  background: $brand-primary;
+}
+
+.wizard > .steps .done a, .wizard > .steps .done a:hover, .wizard > .steps .done a:active {
+  background: lighten($brand-primary, 30%);
+  color: #fff;
+}
+
+.wizard > .steps a, .wizard > .steps a:hover, .wizard > .steps a:active {
+  padding: .5em 1em;
+  border-radius: 30px;
+}
+
+.wizard > .actions a, .wizard > .actions a:hover, .wizard > .actions a:active {
+  background: $brand-info;
+}

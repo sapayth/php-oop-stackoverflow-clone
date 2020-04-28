@@ -1,0 +1,51 @@
+.sign-in-wrapper {
+  padding-top: 10%;
+  .sign-container {
+    max-width: 350px;
+    background: $brand-white;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 0px auto;
+    position: relative;
+    .copyright-txt {
+      position: absolute;
+      bottom: -25px;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  .logo {
+    text-align: center;
+    font-weight: bold;
+  }
+  h2, h3 {
+    margin: 0 0 15px 0;
+  }
+  .sign-in-form {
+    margin-top: 30px;
+  }
+  .user-lock-thumb {
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+  }
+  .lock-bg {
+    background: transparent;
+  }
+}
+
+.error-txt {
+  font-size: 140px;
+}
+
+@media (max-width: 420px) {
+  .sign-in-wrapper {
+  .sign-container {
+    width: 300px;
+  }
+  }
+
+}

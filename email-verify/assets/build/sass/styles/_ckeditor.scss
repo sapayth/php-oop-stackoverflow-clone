@@ -1,0 +1,92 @@
+#editor-container {
+    width:100%;
+    margin:10px auto 0;
+}
+#header-editor {
+    overflow:hidden;
+    padding:0 0 30px;
+    border-bottom:1px solid #eaeaea;
+    position:relative;
+}
+#headerLeft,#headerRight {
+    width:100%;
+    overflow:hidden;
+}
+#headerLeft {
+    float:left;
+    padding:10px 1px 1px;
+}
+#headerLeft h2,#headerLeft h3 {
+    margin:0;
+    overflow:hidden;
+    font-weight:normal;
+    font-family:'Open Sans',sans-serif;
+}
+#headerLeft h2 {
+    font-size:2.6em;
+    line-height:1.1em;
+    text-transform:capitalize;
+    color:#32323a;
+    margin-bottom:30px;
+}
+#headerLeft h3 {
+    font-size:1.5em;
+    line-height:1.1em;
+    margin:.2em 0 0;
+    color:#32323a;
+}
+#headerRight {
+    float:right;
+    padding:1px;
+}
+#headerRight p {
+    line-height:1.8em;
+    text-align:justify;
+    margin:0;
+}
+#headerRight p+p {
+    margin-top:20px;
+}
+#headerRight>div {
+    padding:20px 0;
+    margin:0;
+    font-size:1.1em;
+    color:#757575;
+}
+#columns {
+    color:#757575;
+    overflow:hidden;
+    padding:20px 0;
+}
+#columns h3 {
+    color:#32323a;
+}
+#columns>div {
+    float:left;
+    width:33.3%;
+}
+#columns #column1>div {
+    margin-left:1px;
+}
+#columns #column3>div {
+    margin-right:1px;
+}
+#columns>div>div {
+    margin:0px 10px;
+    padding:10px 0;
+}
+#columns blockquote {
+    margin-left:15px;
+}
+#taglist {
+    display:inline-block;
+    margin-left:20px;
+    font-weight:bold;
+    margin:0 0 0 20px;
+}
+.cke_editable.cke_editable_inline.cke_focus {
+    background:#fcfcfc;
+    border:1px solid #eaeaea;
+    cursor:text;
+    outline: medium none;
+}

@@ -1,0 +1,14 @@
+// Mixins
+// --------------------------------------------------
+@import "mixins/vendor-prefix.scss";
+
+// Components
+@import "mixins/labels";
+@import "mixins/badges";
+@import "mixins/alerts";
+@import "mixins/buttons";
+@import "mixins/panels";
+@import "mixins/forms";
+
+// Skins
+@import "mixins/colors";

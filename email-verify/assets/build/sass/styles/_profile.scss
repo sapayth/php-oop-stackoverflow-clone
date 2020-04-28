@@ -1,0 +1,139 @@
+.profile-wrap {
+
+  .profile-title {
+    margin: 0;
+  }
+
+
+  .profile-thumb {
+    text-align: center;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .quick-contact {
+    font-size: 0;
+    margin-bottom: 30px;
+    a {
+      width: 33.33%;
+      display: inline-block;
+      font-size: 12px;
+      text-align: center;
+      background: $text-muted;
+      padding: 15px;
+      color: $brand-white;
+      &:hover , &:focus{
+        text-decoration: none;
+      }
+      i {
+        padding-right: 5px;
+        display: block;
+        padding-bottom: 10px;
+        font-size: 16px;
+      }
+    }
+
+    .call {
+      background: $brand-primary;
+    }
+    .mail {
+      background: $brand-info;
+    }
+    .chat {
+      background: $brand-warning;
+    }
+
+  }
+
+  .profile-info {
+    margin-bottom: 30px;
+    padding: 0 20px;
+    font-size: 13px;
+    p {
+//      font-size: 12px;
+    }
+    h4, h5 {
+      font-weight: bold;
+    }
+    li {
+      margin-bottom: 20px;
+      i {
+        width: 40px;
+        float: left;
+        position: relative;
+        font-size: 16px;
+        top: 4px;
+        color: $text-muted;
+      }
+      .p-i-list {
+        display: block;
+        overflow: hidden;
+        span {
+          display: block;
+        }
+      }
+    }
+  }
+
+}
+
+.profile-tabs {
+  .nav li.active > a {
+    color: inherit;
+  }
+  .tab-content {
+    border: none;
+  }
+  .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover, .nav-tabs > li > a:hover {
+    color: $brand-white;
+    background-color: $brand-info;
+    border: 1px solid transparent;
+    border-bottom-color: transparent;
+    border-radius: 3px 3px 0 0;
+  }
+  .nav-tabs {
+    border-bottom: 1px solid $brand-info;
+  }
+
+  .tab-content {
+    padding: 15px 0;
+  }
+}
+
+
+.activity-list {
+  .activity-item {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    > .pull-left {
+      margin-right: 10px;
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    .media-body {
+      font-size: 12px;
+    }
+    .action-row {
+      margin-top: 10px;
+    }
+    .well{
+      margin-top: 15px;
+      margin-bottom: 0;
+    }
+    .photo-gal {
+      margin-top: 15px;
+    }
+  }
+}
+
+
+@media (max-width: 420px) {
+
+
+}
