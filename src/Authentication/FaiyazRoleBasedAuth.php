@@ -11,6 +11,7 @@ class FaiyazRoleBasedAuth extends FaiyazConnection
 {
 
     //register method
+    // MUST RETURN SOMETHING AFTER SUCCESSFUL CREATION OF A NEW USER
     public function register($role_id, $username , $password)
     {
         try {
@@ -58,12 +59,14 @@ class FaiyazRoleBasedAuth extends FaiyazConnection
             if ($stmt->rowCount() > 0) {
 
                 if (password_verify($password, $userRow['password'])) {
+                    
+                    // ALWAYS SESSION START WILL BE THE FIRST THING AFTER LOGIN SUCCESS
 
                     $_SESSION['loggedin'] = true;
                     $_SESSION['user_id'] = $userRow['id'];
                     $_SESSION['username'] = $userRow['username'];
 
-                    $this->showUerData();
+                    $this->showUerData(); // THIS WAS NICE
 
                     return true;
 
@@ -83,6 +86,9 @@ class FaiyazRoleBasedAuth extends FaiyazConnection
         echo "<br>";
     }
 
+// I DON'T ACTUALLY FIND ANY OF THESE TWO METHODS USAGE IN THIS CLASS    
+    
+/*    
     public function setAuthenticate()
     {
         $_SESSION['loggedin'] = true;
@@ -98,5 +104,6 @@ class FaiyazRoleBasedAuth extends FaiyazConnection
         }
         return false;
     }
+ */
 
 }
