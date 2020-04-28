@@ -1,0 +1,142 @@
+.land-body{
+  background: $brand-white;
+  .navbar-inverse {
+    border-radius: 0;
+    background: $nav-aside-bg;
+    border: none;
+  }
+
+  .navbar-inverse .navbar-nav>.active>a,
+  .navbar-inverse .navbar-nav>.active>a:focus,
+  .navbar-inverse .navbar-nav>.active>a:hover {
+    background: $brand-info;
+  }
+
+  .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: $brand-info;
+  }
+
+  .navbar-brand {
+    font-weight: bold;
+    color: $brand-white;
+    img {
+      margin-top: -3px;
+    }
+  }
+  .tools {
+    background: #f4f4f4;
+    img{
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.site-title {
+  padding: 100px 0;
+  h1 {
+    margin-bottom: 30px;
+  }
+}
+
+.demo-content {
+  background: $brand-default;
+  .demo-title {
+    margin-bottom: 30px;
+    font-size: 20px;
+  }
+  .btn-gap {
+    margin: 20px 0;
+  }
+}
+.section-gap {
+  padding: 100px 0;
+}
+
+.f-icon {
+  font-size: 30px;
+  color: darken($brand-default, 30%);
+}
+
+.admin-features .col-md-4,
+.admin-features .col-md-6 {
+  min-height: 200px;
+  padding: 0 3%;
+}
+
+.admin-features {
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+//    color: $brand-primary;
+  }
+}
+
+.promo-bg {
+  background: $nav-aside-bg;
+  color: $brand-white;
+  h2 {
+    margin-bottom: 50px;
+    font-weight: 300;
+    line-height: 45px;
+  }
+  .btn {
+    border-radius: 0;
+  }
+}
+
+
+.f-social-links {
+  margin: 30px 0;
+  a{
+    margin: 0 10px;
+    &:hover{
+      color: $brand-info;
+    }
+  }
+}
+
+@media (max-width: 767px){
+  .land-body{
+    .navbar-brand {
+      margin-left: 15px;
+    }
+
+    .navbar-inverse .navbar-toggle {
+      border-color: $nav-aside-bg !important;
+    }
+    .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+      background: darken($nav-aside-bg, 10%) !important;
+    }
+
+    .site-title {
+      padding: 30px 0;
+      h1 {
+        margin-bottom: 30px;
+        font-size: 24px;
+      }
+    }
+
+    .section-gap {
+      padding: 30px 0;
+    }
+
+    .demo-content .demo-title {
+      font-size: 18px;
+      small {
+        font-size: 14px;
+      }
+    }
+
+    .promo-bg h2 {
+      line-height: 28px;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .f-social-links {
+      margin: 15px 0;
+    }
+  }
+
+}

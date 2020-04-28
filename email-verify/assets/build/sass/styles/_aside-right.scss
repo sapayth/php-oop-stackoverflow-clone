@@ -1,0 +1,77 @@
+.aside-widget {
+  padding: 12px;
+  h5 {
+    font-weight: bold;
+    border-bottom: 1px solid #dae0e6;
+    padding-bottom: 22px;
+  }
+
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+    li {
+      padding: 10px;
+      cursor: pointer;
+
+      .media-thumb {
+        position: relative;
+        span {
+          width: 10px;
+          height: 10px;
+          background:#ddd;
+          border: 1px solid $brand-white;
+          border-radius: 50%;
+          position: absolute;
+          left: 0;
+          top: 2px;
+        }
+        .online {
+          background: $brand-success;
+        }
+
+        .busy {
+          background: $brand-danger;
+        }
+
+        .away {
+          background: $brand-warning;
+        }
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+      .media-body small {
+        display: block;
+      }
+
+      &:hover {
+        background-color: rgba(0,0,0,.06);
+        border-radius: 3px;
+      }
+
+    }
+  }
+
+  .table>tbody>tr>td {
+    border-bottom: 1px solid #ddd;
+    border-top:none;
+  }
+
+  .progress {
+    height: 8px;
+  }
+
+  .task-info {
+    margin-bottom: 10px;
+  }
+
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

@@ -1,0 +1,654 @@
+// Nav
+.Mailbox-nav {
+    padding: 0 30px 15px;
+    &-aside {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        background-color: $brand-white;
+        overflow-y: auto;
+
+        height: calc(100vh - 160px);
+        margin-top: 65px;
+        .Box__header {
+            background-color: $brand-white;
+            padding: 15px 30px;
+        }
+    }
+    .nav {
+        &-heading {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+        > li {
+            margin-top: 2px;
+            > a {
+                border-radius: 3px;
+                padding: 5px 15px;
+                &:hover {
+                    color: inherit;
+                    background-color: lighten($brand-light, 3%);
+                }
+            }
+            &.active {
+                background-color: transparent;
+                > a {
+                    color: $brand-white;
+                    background-color: $brand-info;
+                }
+            }
+        }
+    }
+}
+
+// List
+.Mailbox-list {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+    transition: all 0.5s ease;
+    &--slideLeft {
+        transform: translate(-100%, 0);
+    }
+
+    .Box__header {
+        background-color: lighten($brand-light, 3%);
+        padding: 18px 15px;
+        .btn-default {
+            // color: darken($brand-light, 35%);
+            border-color: rgba(#333,.2);
+        }
+    }
+}
+.Mail-list {
+    margin-bottom: 0;
+    background-color: lighten($brand-light, 3%);
+}
+.Mail {
+    padding: 0;
+    position: relative;
+    border-radius: 0 !important;
+    border-left: 0;
+    border-right: 0;
+    border-color: darken($brand-light, 3%);
+    background-color: transparent;
+    &:first-child {
+        border-top: 0;
+    }
+    > a {
+        display: block;
+        padding: 15px;
+        &:focus,
+        &:hover {
+            text-decoration: none;
+            background-color: rgba(0,0,0,.02);
+        }
+    }
+
+    &__status {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border: none;
+        border-radius: 500px;
+        overflow: hidden;
+        right: 0;
+        top: 50%;
+        transform: translate(0, -50%);
+        margin-top: 5px;
+        margin-right: 16px;
+        padding: 0;
+        &:hover {
+            background-color: rgba(0,0,0,.2);
+        }
+        &--read {
+            background-color: rgba(0,0,0,.12);
+        }
+        &--unread {
+            background-color: $brand-info;
+        }
+    }
+    &__avatar {
+        position: relative;
+        text-align: center;
+        width: 38px;
+        height: 38px;
+        background-color: rgba(0,0,0,.06);
+        margin-right: 10px;
+        border-radius: 50px;
+        overflow: hidden;
+        img {
+            max-width: 100%;
+        }
+        &-icon {
+            margin: 0 !important;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: $font-size-base;
+        }
+        &--primary {
+            color: $brand-white;
+            background-color: $brand-primary;
+        }
+        &--info {
+            color: $brand-white;
+            background-color: $brand-info;
+        }
+        &--success {
+            color: $brand-white;
+            background-color: $brand-success;
+        }
+        &--danger {
+            color: $brand-white;
+            background-color: $brand-danger;
+        }
+    }
+    &__highlight {
+        display: block;
+        overflow: hidden;
+        // color: $text-color;
+        &-attachment {
+            float: right;
+            margin-right: 5px;
+            margin-top: 1px;
+            margin-bottom: 0;
+            font-size: $font-size-xs;
+            color: $text-muted;
+        }
+        &-time {
+            float: right;
+            // margin-right: -3px;
+            margin-top: 1px;
+            margin-bottom: 0;
+            font-size: $font-size-xs;
+            color: $text-muted;
+        }
+        &-name {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: $font-size-sm;
+            font-weight: 600;
+        }
+        &-excerpt {
+            padding-right: 10px;
+            margin-top: 3px;
+            margin-bottom: 0;
+            line-height: 1.3;
+            color: $text-muted;
+            font-size: $font-size-sm;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    &.active {
+        background-color: $brand-info;
+        border-color: $brand-info;
+        a {
+            color: $brand-white;
+        }
+        .Mail__highlight-time,
+        .Mail__highlight-excerpt {
+            color: rgba($brand-white, .7);
+        }
+        &:hover {
+            background-color: $brand-info;
+            border-color: $brand-info;
+        }
+    }
+
+}
+
+// Mail details
+.Mailbox-details {
+    .Box__header {
+        padding: 15px 0;
+    }
+}
+.Mail-actoins {
+    // display: inline-block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    list-style: none;
+    white-space: nowrap;
+    width: 100%;
+    > li {
+        display: inline-block;
+        float: none;
+        white-space: nowrap;
+        &:first-child {
+            margin-left: 10px;
+            margin-right: 10px;
+            &::after {
+                content: "|";
+                position: absolute;;
+                right: 0;
+                top: 0;
+                margin-top: 10px;
+                margin-right: -10px;
+                color: rgba(0,0,0,.2);
+            }
+        }
+        > a {
+            padding: 10px 10px;
+            > i {
+                width: auto;
+                margin-right: 5px;
+            }
+        }
+        &:hover {
+            > a {
+                color: $brand-black;
+                background-color: transparent !important;
+            }
+        }
+    }
+}
+.Mail-details {
+    padding: 15px 30px;
+}
+
+.Mailbox-innerContent {
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+}
+
+@media (min-width: 767px) {
+    .Mailbox-nav {
+        padding: 0 30px 15px;
+        &-aside {
+            display: block;
+            width: 250px;
+            position: relative;
+            top: auto;
+            left: auto;
+
+            height: 100%;
+            margin-top: 0;
+            padding: 0;
+        }
+    }
+
+    // List
+    .Mailbox-list {}
+
+    // Details
+    .Mail-details {
+        padding: 30px 60px;
+    }
+
+    #toggle-mailbox-nav {
+        display: none;
+    }
+}
+
+@media (min-width: 1200px) {
+    .Mailbox-list {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: auto;
+    }
+
+    .Mail-actoins {
+        padding-left: 10px;
+    }
+
+    #return-mailbox-list {
+        display: none;
+    }
+}
+
+
+// .Mail {
+//     &-nav {
+//         // float: left;
+//         display: none;
+//         // width: 250px;
+//         width: 250px;
+//         // height: 100%;
+//         // position: fixed;
+//         background-color: $brand-white;
+//
+//         float: none;
+//         height: auto;
+//         position: absolute;
+//
+//         margin-top: 35px;
+//         left: 50%;
+//         margin-left: -125px;
+//         right: 0;
+//         border-radius: 10px;
+//         padding: 30px;
+//         z-index: 10;
+//
+//         min-height: 300px;
+//         max-height: 390px;
+//         overflow-y: auto;
+//         .nav {
+//             &-heading {
+//                 font-size: 12px;
+//                 text-transform: uppercase;
+//                 letter-spacing: .06em;
+//                 margin-top: 20px;
+//                 font-weight: 600;
+//                 color: darken($brand-light, 25%);
+//             }
+//             > li {
+//                 margin-top: 2px;
+//                 > a {
+//                     border-radius: 3px;
+//                     padding: 5px 15px;
+//                     color: darken($brand-light, 30%);
+//                     &:hover {
+//                         color: $brand-white;
+//                         background-color: $brand-info;
+//                     }
+//                 }
+//                 &.active {
+//                     background-color: transparent;
+//                     > a {
+//                         color: $brand-white;
+//                         background-color: $brand-info;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//
+//     &-content {
+//         height: 100%;
+//         margin-left: 0;
+//         overflow: auto;}
+//     &-view {
+//         position: relative;
+//         height: 100%; }
+//     &-details {
+//         position: relative;
+//         height: 100%;
+//         overflow: auto;
+//         background-color: $brand-white;
+//         &__actions {
+//             background-color: rgba(0,0,0,.03);
+//             > li {
+//                 > a {
+//                     padding: 10px 10px;
+//                     > i {
+//                         width: auto;
+//                         margin-right: 5px;
+//                     }
+//                     &:hover {
+//                         color: $brand-black;
+//                         background-color: inherit;
+//                     }
+//                 }
+//             }
+//         }
+//         &__email-content {
+//             padding: 15px 30px;
+//         }
+//     }
+//
+//     &-list {
+//         // float: left;
+//         // width: 360px;
+//         height: 100%;
+//         overflow-y: auto;
+//         // border-right: 1px solid red;
+//         margin-bottom: 0;
+//         background-color: lighten($brand-light, 3%);
+//         transition: all 0.5s ease;
+//
+//         float: none;
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//         bottom: 0;
+//         right: 0;
+//         z-index: 10;
+//         &--slideleft {
+//             transform: translate(-100%, 0);
+//         }
+//
+//         .toggle-mail-nav {
+//             display: block;
+//             .btn {
+//                 height: 35px;
+//                 border-radius: 0;
+//             }
+//         }
+//
+//         &-header {
+//             padding: 10px 15px;
+//             .btn {
+//                 color: darken($brand-light, 35%);
+//                 border-color: darken($brand-light, 6%);
+//             }
+//         }
+//     }
+//
+//     a {
+//         display: block;
+//         // padding: 15px 24px 15px 15px;
+//         padding: 15px;
+//         &:focus,
+//         &:hover {
+//             text-decoration: none;
+//             background-color: rgba(0,0,0,.02);
+//         }
+//     }
+//     padding: 0;
+//     position: relative;
+//
+//     border-radius: 0 !important;
+//     border-left: 0;
+//     border-right: 0;
+//     border-color: darken($brand-light, 3%);
+//     background-color: transparent;
+//
+//     &__status {
+//         position: absolute;
+//         width: 8px;
+//         height: 8px;
+//         border: none;
+//         border-radius: 500px;
+//         overflow: hidden;
+//         right: 0;
+//         top: 50%;
+//         transform: translate(0, -50%);
+//         margin-top: 5px;
+//         margin-right: 16px;
+//         padding: 0;
+//         &:hover {
+//             background-color: rgba(0,0,0,.2);
+//         }
+//         &--read {
+//             background-color: rgba(0,0,0,.12);
+//         }
+//         &--unread {
+//             background-color: $brand-info;
+//         }
+//     }
+//     &__avatar {
+//         position: relative;
+//         text-align: center;
+//         width: 38px;
+//         height: 38px;
+//         background-color: rgba(0,0,0,.06);
+//         margin-right: 10px;
+//         border-radius: 50px;
+//         overflow: hidden;
+//         img {
+//             max-width: 100%;
+//         }
+//         &-icon {
+//             margin: 0 !important;
+//             position: absolute;
+//             top: 50%;
+//             left: 50%;
+//             transform: translate(-50%, -50%);
+//             font-size: $font-size-base;
+//         }
+//         &--primary {
+//             color: $brand-white;
+//             background-color: $brand-primary;
+//         }
+//         &--info {
+//             color: $brand-white;
+//             background-color: $brand-info;
+//         }
+//         &--success {
+//             color: $brand-white;
+//             background-color: $brand-success;
+//         }
+//         &--danger {
+//             color: $brand-white;
+//             background-color: $brand-danger;
+//         }
+//     }
+//     &__highlight {
+//         display: block;
+//         overflow: hidden;
+//         // color: $text-color;
+//         &-attachment {
+//             float: right;
+//             margin-right: 5px;
+//             margin-top: 1px;
+//             margin-bottom: 0;
+//             font-size: $font-size-xs;
+//             color: $text-muted;
+//         }
+//         &-time {
+//             float: right;
+//             // margin-right: -3px;
+//             margin-top: 1px;
+//             margin-bottom: 0;
+//             font-size: $font-size-xs;
+//             color: $text-muted;
+//         }
+//         &-name {
+//             display: block;
+//             white-space: nowrap;
+//             overflow: hidden;
+//             text-overflow: ellipsis;
+//             font-size: $font-size-sm;
+//             font-weight: 600;
+//         }
+//         &-excerpt {
+//             margin-top: 3px;
+//             margin-bottom: 0;
+//             line-height: 1.3;
+//             color: $text-muted;
+//             font-size: $font-size-sm;
+//             display: block;
+//             white-space: nowrap;
+//             overflow: hidden;
+//             text-overflow: ellipsis;
+//         }
+//     }
+//
+//     &.active {
+//         background-color: $brand-info;
+//         border-color: $brand-info;
+//         a {
+//             color: $brand-white;
+//         }
+//         .Mail__highlight-time,
+//         .Mail__highlight-excerpt {
+//             color: rgba($brand-white, .7);
+//         }
+//         &:hover {
+//             background-color: $brand-info;
+//             border-color: $brand-info;
+//         }
+//     }
+//
+// }
+//
+// @media (min-width: 1200px) {
+//     .Mail {
+//         &-nav {
+//             border-radius: 0;
+//             margin-top: 0;
+//             display: block;
+//             float: left;
+//             height: 100%;
+//             position: fixed;
+//             left: auto;
+//             margin-left: auto;
+//             right: auto;
+//             border-radius: none;
+//             z-index: 10;
+//             // min-height: auto;
+//
+//             min-height: 100%;
+//             max-height: 100%;
+//         }
+//
+//         &-content {
+//             height: 100%;
+//             margin-left: 250px;
+//             overflow: auto;}
+//         &-view {
+//             position: relative;
+//             height: 100%;
+//             background-color: lighten($brand-light, 3%); }
+//         &-details {
+//             position: relative;
+//             height: 100%;
+//             overflow: auto;
+//             background-color: $brand-white;
+//             &__actions {
+//                 background-color: rgba(0,0,0,.03);
+//                 > li {
+//                     &.return-mail-list {
+//                         display: none;
+//                     }
+//                 }
+//             }
+//             &__email-content {
+//                 padding: 30px 60px;
+//             }
+//
+//         }
+//         &-list {
+//             float: left;
+//             width: 360px;
+//             height: 100%;
+//             overflow-y: auto;
+//             border-right: 1px solid darken($brand-light, 3%);
+//             border-left: 1px solid darken($brand-light, 3%);
+//             margin-bottom: 0;
+//             // transition: all 0.5s ease;
+//             position: relative;
+//             top: auto;
+//             left: auto;
+//             bottom: auto;
+//             right: auto;
+//             z-index: 10;
+//             &--slideleft {
+//                 transform: translate(-100%, 0);
+//             }
+//
+//             .toggle-mail-nav {
+//                 display: none;
+//             }
+//         }
+//
+//     }
+// }
