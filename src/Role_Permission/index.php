@@ -10,20 +10,10 @@ include_once '../../autoload.php';
 
 
 $user = new FaiyazRoleBasedAuth;
-$login = $user->login('User', 'Pass1436');
+$login = $user->login('Admin', 'Pass1436');
 
 
-// $crud = new FaiyazRolePermission();
-// var_dump ($crud->getPermissionId());
+$crud = new FaiyazRolePermission();
 
-echo "<br>";
-
-
-
- echo "<br>";
-
-//  if($crud->checkRole() == 1){
-//      echo "You are Admin";
-//  }else{
-//      echo "You are user";
-//  }
+// $crud->CreatePost();
+// $crud->DeletePost();

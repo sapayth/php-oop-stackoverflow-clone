@@ -10,20 +10,6 @@ include_once '../../autoload.php';
 class FaiyazRolePermission extends FaiyazQuery
 {
 
-    public function getPermissionId()
-    {
-
-        $db = $this->connect();
-        $sql = "SELECT id FROM `permissions` WHERE permission = 'Can_Delete' ";
-        $stmt = $db->prepare($sql);
-        $stmt->execute();
-        
-        $permission_id = $stmt->fetchColumn();
-        
-        return $permission_id;
-        
-    }
-
     public function checkRole()
     {
         try {
@@ -44,73 +30,84 @@ class FaiyazRolePermission extends FaiyazQuery
         }
     }
 
-    public function checkPermssion()
+    public function CreatePost()
     {
         try {
 
+            //Get the permission Id
             $db = $this->connect();
+            $sql = "SELECT id FROM `permissions` WHERE permission = 'Can Create' ";
+            $stmt = $db->prepare($sql);
+            $stmt->execute();
 
+            $permission_id = $stmt->fetchColumn();
+
+            //Check the authenticated User Role
             $authenticated_role_id = $this->checkRole();
-            $permission_id = $this->getPermissionId();
 
+            //Get All the permission Id from role_permission table
             $sql = "SELECT * FROM role_permission WHERE role_id = :role_id AND permission_id= :permission_id";
             $stmt = $db->prepare($sql);
             $stmt->bindParam(':role_id', $authenticated_role_id);
             $stmt->bindParam(':permission_id', $permission_id);
             $stmt->execute();
-            return $stmt;
 
-            
+            //Check if the permision exists on the table for specific role
+            if ($stmt->rowCount() > 0) {
+
+                //then do the operation
+                $data = [
+                    "user_id" => 1,
+                    "title" => 'This is a post to test Role Permsision From Admin',
+                    "body" => 'This is a post to test Role Permsision Body',
+                ];
+
+                $this->insert('posts', $data);
+
+            } else {
+                echo "You are not Authorize to create Post";
+            }
 
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 
-    public function CreatePost()
+    public function DeletePost()
     {
         try {
 
-            $permission = $this->checkPermssion();
+            //Get the permission Id
+            $db = $this->connect();
+            $sql = "SELECT id FROM `permissions` WHERE permission = 'Can Delete' ";
+            $stmt = $db->prepare($sql);
+            $stmt->execute();
 
-            if ($permission->rowCount() > 0) {
+            $permission_id = $stmt->fetchColumn();
 
-                $data = [
-                    "user_id" => 2,
-                    "title" => "This is role Permission Checek from User",
-                    "body" => "This is role Permission Checek from User Body"
-                ];
-                
-               //Insert Post 
-                $this->insert("posts", $data);
+            //Check the authenticated User Role
+            $authenticated_role_id = $this->checkRole();
+
+            //Get All the permission Id from role_permission table
+            $sql = "SELECT * FROM role_permission WHERE role_id = :role_id AND permission_id= :permission_id";
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':role_id', $authenticated_role_id);
+            $stmt->bindParam(':permission_id', $permission_id);
+            $stmt->execute();
+
+            //Check if the permision exists on the table for specific role
+            if ($stmt->rowCount() > 0) {
+
+                //then do the operation
+                $this->deleteById('posts', 1);
+
             } else {
-                echo "You are not Authorize to create Post";
+                echo "You are not Authorize to Delete Post";
             }
 
         } catch (PDOException $e) {
-            $e->getMessage();
+            echo $e->getMessage();
         }
     }
 
-    // public function DeletePost()
-    // {
-    //     try {
-
-    //         $permission = $this->checkPermssion();
-
-    //         if ($permission->rowCount() > 0) {
-                
-    //             //delete post by specific id
-    //             // $this->deleteById('posts', 5);
-
-    //             echo "You are authorize to delete";
-
-    //         } else {
-    //             echo "You are not Permittedd to delete";
-    //         }
-
-    //     } catch (PDOException $e) {
-    //         $e->getMessage();
-    //     }
-    // }
 }
