@@ -1,0 +1,166 @@
+* {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+}
+
+body {
+  font-size: 16px;
+  line-height: 18px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-image: url("bg.png");
+  margin: 50px;
+  text-align: center;
+}
+
+.wrapper {
+  width: 70%;
+  height: 80vh;
+  margin: 0 auto;
+  background: #fff;
+}
+
+.mainmenu {
+  margin-top: 3px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.mainmenu ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.mainmenu ul li {
+  display: block;
+  float: left
+}
+
+.mainmenu ul li a {
+  background: #0d1238;
+  color: #fff;
+  display: inline-block;
+  font-weight: bold;
+  margin-right: 1px;
+  padding: 5px 10px;
+  text-decoration: none;
+  transition: ease-in-out 0.5s;
+}
+
+.mainmenu ul li a:hover {
+  background: #666;
+}
+
+.content {
+  border-bottom: 0px solid #c3c3c3;
+  border-top: 1px solid #c3c3c3;
+  min-height: 0px;
+  overflow: hidden;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.content h2 {
+  background: #0d1238;
+  border: 1px solid #c9c9c9;
+  color: #fff;
+  margin-bottom: 20px;
+  padding: 10px;
+  text-align: center;
+  width: 450px;
+}
+
+.login_reg {
+  width: 450px;
+  color: #FFF;
+  background: #0d1238;
+  border: 1px solid #d2d2d2;
+  border-radius: 5px;
+  margin: 0 auto;
+  font-size: 16px;
+  overflow: hidden;
+  padding: 20px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  border: 1px solid #d5d5d5;
+  margin-bottom: 6px;
+  margin-left: 10px;
+  width: 285px;
+  padding: 5px;
+}
+
+input[type="submit"], input[type="reset"] {
+  background: #FFF;
+  border: 1px solid #626262;
+  border-radius: 3px;
+  color: #0d1238;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 5px 15px;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover {
+  background: #333;
+  color: #FFF;
+}
+
+
+.back-button {
+  margin-top: 80px;
+  width: 110px;
+  background-color: #0d1238;
+  padding: 10px;
+  color: #FFF;
+  display: inline-block;
+  width: 450px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.userlist {
+  background: #fff;
+  border: 1px solid #ddd;
+  color: #3399ff;
+  font-weight: bold;
+  margin: 0 auto 8px;
+  overflow: hidden;
+  padding: 4px;
+  text-align: center;
+  width: 350px;
+}
+
+table.tbl_one {
+  margin: 0 auto;
+}
+
+table.tbl_one tr th {
+  background: #888;
+  color: #fff;
+  padding: 3px 32px;
+  text-shadow: 1px 1px 2px #000;
+}
+
+table.tbl_one tr:nth-child(2n+1) {
+  background: #e8e5e5;
+  height: 30px;
+}
+
+table.tbl_one tr:nth-child(2n) {
+  background: #ddd;
+  height: 30px;
+}
+
+table.tbl_one tr td a {
+  color: #009bda;
+  text-decoration: none;
+}
+
+table.tbl_one tr td a:hover {
+  color: #003972;
+  text-decoration: none;
+}
