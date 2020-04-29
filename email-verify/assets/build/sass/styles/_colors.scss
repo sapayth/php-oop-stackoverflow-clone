@@ -1,0 +1,12 @@
+@each $color in $array-brand {
+  // get the color
+  $get-color: map-get($brand-colors, $color);
+  .bg-#{$color} {
+      color: $brand-white;
+      background-color: $get-color;
+  }
+}
+
+.bg-light {
+    color: $text-color;
+}

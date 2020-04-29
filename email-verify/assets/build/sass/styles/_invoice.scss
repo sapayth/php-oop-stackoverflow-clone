@@ -1,0 +1,21 @@
+.invoice-print {
+  background: $brand-white;
+}
+
+.invoice-total > tbody > tr > td:first-child {
+  text-align: right;
+}
+.invoice-total > tbody > tr > td {
+  border: 0 none;
+  background: none;
+}
+
+.invoice-total > tbody > tr > td:last-child {
+  border-bottom: 1px solid #DDDDDD;
+  text-align: right;
+  width: 15%;
+}
+.invoice-table > thead > tr > th:last-child,
+.invoice-table > tbody > tr > td:last-child {
+  text-align: right;
+}

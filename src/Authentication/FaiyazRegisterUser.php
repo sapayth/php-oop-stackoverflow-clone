@@ -3,8 +3,12 @@ namespace Src\Authentication;
 
 use Src\Database\FaiyazConnection;
 
+
+// SO EXTENDING THE CLASS IS OKAY BUT IF YOU USE CONSTRCUTOR IN DATABASE CLASS THINGS CAN CHANGE A LITTLE
 class FaiyazRegisterUser extends FaiyazConnection
 {
+    
+    // MUST RETURN SOMETHING AFTER SUCCESS
     public function register($username = 'asif', $password = 'Pass1436')
     {
         try {

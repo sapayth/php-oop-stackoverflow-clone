@@ -1,0 +1,57 @@
+.btn {
+    background-color: transparent;
+    color: inherit;
+    &:focus,
+    &:active {
+        box-shadow: none;
+    }
+
+}
+
+.btn-group {
+    &.open {
+        .dropdown-toggle {
+            box-shadow: none;
+        }
+    }
+}
+
+.btn-rounded {
+    border-radius: 100px;
+}
+
+@each $color in $array-brand {
+  // get the color
+  $get-color: map-get($brand-colors, $color);
+  .btn-#{$color} {
+    @include button-variant($brand-white, $get-color, $get-color);
+  }
+}
+
+
+.btn-default {
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: #eee;
+    border-color: #ccc;
+  }
+  &:active:focus,
+  &:active:hover {
+      background-color: darken(#eee, 3%);
+      border-color: darken(#ccc, 5%);
+  }
+}
+
+.open>.dropdown-toggle.btn-default:focus {
+    background-color: darken(#eee, 3%);
+    border-color: darken(#ccc, 5%);
+}
+
+.btn-radius-less{
+  border-radius: 0;
+}
+
+.btn-capsul {
+  border-radius: 30px;
+}

@@ -1,0 +1,112 @@
+//
+// Pager pagination
+// --------------------------------------------------
+
+
+.pager {
+  li {
+    > a,
+    > span {
+    //   background-color: $pager-bg;
+    //   border: 1px solid $pager-border;
+    //   border-radius: $pager-border-radius;
+    }
+
+    > a:hover,
+    > a:focus {
+        color: $brand-white;
+        background-color: $brand-primary;
+        border: 1px solid $brand-primary;
+    }
+  }
+
+  .disabled {
+    > a,
+    > a:hover,
+    > a:focus,
+    > span {
+    //   color: $pager-disabled-color;
+    //   background-color: $pager-bg;
+    }
+  }
+}
+
+.pagination>li>a, .pagination>li>span {
+  color: inherit;
+}
+
+
+.breadcrumb-border {
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #dae0e6;
+  margin-bottom: 20px;
+
+  ul.breadcrumb {
+    margin-bottom: 0;
+    border-radius: 0;
+    background: inherit;
+  }
+
+  .btn {
+    margin-top: 4px;
+  }
+}
+
+// page heading
+
+.page-head-wrap {
+  padding: 15px;
+  background: rgba(255,255,255,.5);
+  position: relative;
+  .breadcrumb-right {
+    position: absolute;
+    right: 15px;
+    top: 8px;
+  }
+}
+
+
+// font icons
+
+
+#font-icons {
+
+  section {
+    margin-bottom: 30px;
+  }
+
+  h2 {
+    margin-top: 0;
+  }
+
+  i {
+    width: 32px;
+    font-size: 14px;
+    display: inline-block;
+    text-align: right;
+    margin-right: 10px;
+  }
+
+  .fa-hover {
+    line-height: 30px;
+    &:hover {
+      background: $brand-info;
+      color: $brand-white;
+      border-radius: 3px;
+      text-decoration: none;
+      .text-muted {
+        color: $brand-white;
+      }
+    }
+  }
+}
+
+
+// progress bars
+
+
+.progress-xs {
+  height: 10px;
+}

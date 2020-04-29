@@ -1,0 +1,14 @@
+// Alerts
+
+@mixin alert-variant($background, $border, $text-color) {
+  background-color: lighten(adjust-hue($background, -10), 30%);
+  border-color: lighten(adjust-hue($border, -10), 15%);
+  color: darken(adjust-hue($text-color, -10), 15%);
+
+  hr {
+    border-top-color: darken($border, 5%);
+  }
+  .alert-link {
+    color: darken($text-color, 10%);
+  }
+}

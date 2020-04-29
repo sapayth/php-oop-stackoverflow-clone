@@ -1,0 +1,208 @@
+/*--------------------------------------------
+Table of contents
+
+01 -    Layout
+02 -    Core CSS
+            -   Type
+            -   tabs
+            -   forms
+            -   buttons
+            -   colors
+03 -    Nav
+04 -    Horizontal Nav
+05 -    Components
+            -   iChecks
+            -   Dropdowns
+            -   pagination
+            -   Labels
+            -   Badges
+            -   Alerts
+            -   Panels
+06 -    Right side Widget
+07 -    Login
+08 -    Invoice
+08 -    Utilities
+10 -    Notifications
+11 -    Mailbox
+12 -    Note
+13 -    Profile
+14 -    Timeline
+15 -    Calendar
+16 -    Widgets
+            -   high charts
+            -   spark line
+            -   table
+            -   nestables
+            -   short states
+17 -    Plugins
+            -   File upload
+            -   Chart Rickshaw
+            -   Ckeditor
+            -   Toastr Notifications
+            -   Select 2
+            -   TagsInput
+            -   Bootstrap TimePicker
+18 -    Bootstrap Reset
+19 -    landing page
+
+----------------------------------------------*/
+
+// Core variables and mixins
+@import "styles/variables";
+@import "styles/mixins";
+
+// Layout
+/*--------------------------------------------
+Layout
+----------------------------------------------*/
+@import "styles/layout";
+
+// Core CSS
+/*--------------------------------------------
+Core CSS
+----------------------------------------------*/
+@import "styles/type";
+@import "styles/tabs";
+@import "styles/forms";
+@import "styles/buttons";
+@import "styles/colors";
+
+/*--------------------------------------------
+Nav
+----------------------------------------------*/
+@import "styles/navs";
+/*--------------------------------------------
+
+Horizontal Nav
+----------------------------------------------*/
+@import "styles/horizontal-nav";
+
+// Components
+/*--------------------------------------------
+Components
+----------------------------------------------*/
+/* iChecks */
+@import "styles/components";
+
+/* dropdowns */
+@import "styles/dropdowns";
+
+/* pagination */
+@import "styles/pagination";
+
+/* pager */
+@import "styles/pager";
+
+/* labels */
+@import "styles/labels";
+
+/* badges */
+@import "styles/badges";
+
+/* alerts */
+@import "styles/alerts";
+
+/* panels */
+@import "styles/panels";
+
+/*--------------------------------------------
+Right side Widget
+----------------------------------------------*/
+@import "styles/aside-right";
+
+/*--------------------------------------------
+Login
+----------------------------------------------*/
+@import "styles/login";
+
+/*--------------------------------------------
+Invoice
+----------------------------------------------*/
+@import "styles/invoice";
+
+// Utility classes
+/*--------------------------------------------
+Utilities
+----------------------------------------------*/
+@import "styles/utilities";
+
+/*--------------------------------------------
+Notifications
+----------------------------------------------*/
+@import "styles/notifications";
+
+/*--------------------------------------------
+Mailbox
+----------------------------------------------*/
+@import "styles/mailbox";
+
+/*--------------------------------------------
+Note
+----------------------------------------------*/
+@import "styles/note";
+
+/*--------------------------------------------
+Profile
+----------------------------------------------*/
+@import "styles/profile";
+
+/*--------------------------------------------
+Timeline
+----------------------------------------------*/
+@import "styles/timeline";
+
+/*--------------------------------------------
+Calendar
+----------------------------------------------*/
+@import "styles/calendar";
+
+// Widgets
+@import "styles/widgets";
+
+
+// Plugins
+/*--------------------------------------------
+File upload
+----------------------------------------------*/
+@import "styles/upload" ;
+
+/*--------------------------------------------
+Chart Rickshaw
+----------------------------------------------*/
+@import "styles/chart-rickshaw";
+
+/*--------------------------------------------
+Ckeditor
+----------------------------------------------*/
+@import "styles/ckeditor";
+
+/*--------------------------------------------
+Toastr Notifications
+----------------------------------------------*/
+@import "styles/toastr";
+
+/*--------------------------------------------
+Select 2
+----------------------------------------------*/
+@import "styles/select2";
+
+/*--------------------------------------------
+TagsInput
+----------------------------------------------*/
+@import "styles/tagsinput";
+
+/*--------------------------------------------
+Bootstrap TimePicker
+----------------------------------------------*/
+@import "styles/timepicker";
+
+
+/*--------------------------------------------
+Bootstrap Reset
+----------------------------------------------*/
+@import "styles/reset";
+
+/*--------------------------------------------
+landing page
+----------------------------------------------*/
+@import "styles/landing";

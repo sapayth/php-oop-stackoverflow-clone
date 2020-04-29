@@ -7,6 +7,8 @@ class Database
 	protected $password = '';
 	protected $db = 'php-oop-stackoverflow-clone';
 	protected $conn;
+	
+	// IF POSSIBLE, TRY USING PARAMETER IN CONSTRUCTOR METHOD
 
 	public function __construct()
 	{

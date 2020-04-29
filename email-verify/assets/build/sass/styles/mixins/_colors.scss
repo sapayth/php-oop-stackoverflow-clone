@@ -1,0 +1,27 @@
+// Contextual backgrounds
+
+@mixin bg-variant($color, $background-color) {
+  color: $color;
+  background-color: $background-color;
+  &.dk,
+  & .dk {
+    background-color: darken($background-color, 5%);;
+  }
+}
+
+
+// Contextual text
+
+@mixin text-variant($text-color){
+  color: $text-color;
+}
+
+// Border
+
+@mixin border-variant($border-color) {
+  border-color: $border-color;
+    // &.b-lter { border-color: lighten($border-color, 6%); }
+    // &.b-lt   { border-color: lighten($border-color, 3%); }
+    // &.b-dk   { border-color: darken($border-color, 3%); }
+    // &.b-dker { border-color: darken($border-color, 6%); }
+}

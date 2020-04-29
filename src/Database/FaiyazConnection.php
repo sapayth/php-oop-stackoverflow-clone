@@ -5,8 +5,15 @@ use PDO;
 
 class FaiyazConnection
 {
+   
+   // THIS TWO PROPERTIES ARE INITIALIZED HERE
+
    protected $db_username = "root";
    protected $db_password = "";
+   
+   // YOU CAN TRY CREATING A CONSTRUCTOR FUNCTION HERE AND PASS THE PROPERTY WHEN CREATING A NEW INSTANCE OF THIS CLASS
+   // public function __construct()
+
 
    public function connect()
    {

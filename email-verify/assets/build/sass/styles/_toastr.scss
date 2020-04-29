@@ -1,0 +1,22 @@
+#toast-container {
+    > div {
+        &:hover {
+            box-shadow: 0 0 12px #999;
+        }
+    }
+}
+
+.toast {
+    &-success {
+        background-color: $brand-success;
+    }
+    &-info {
+        background-color: $brand-info;
+    }
+    &-warning {
+        background-color: $brand-warning;
+    }
+    &-error {
+        background-color: $brand-danger;
+    }
+}
